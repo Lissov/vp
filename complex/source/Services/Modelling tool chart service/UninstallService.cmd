@@ -1,0 +1,1 @@
+%windir%\Microsoft.NET\Framework\v2.0.50727\InstallUtil.exe /u "Modelling tool chart service.exe" /LogFile=uninstall.log
