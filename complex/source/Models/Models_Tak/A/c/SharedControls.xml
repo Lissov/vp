@@ -1,0 +1,37 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SharedControls
+</name>
+</assembly>
+<members>
+<member name="P:SharedControls.Timer.MilliSeconds">
+	<summary>
+ Used to return time betwen timer's start and end in milliseconds
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:SharedControls.Timer.Seconds">
+	<summary>
+ Used to return time betwen timer's start and end in seconds
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:SharedControls.Timer.StartTimer">
+	<summary>
+ Time when timer was started
+ </summary>
+</member><member name="P:SharedControls.Timer.EndTimer">
+	<summary>
+ Time when timer was stopped
+ </summary>
+</member><member name="P:SharedControls.Timer.PauseTimer">
+	<summary>
+ Time when timer was paused
+ </summary>
+</member>
+</members>
+</doc>

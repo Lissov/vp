@@ -1,0 +1,182 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+ModelBase
+</name>
+</assembly>
+<members>
+<member name="P:ModelBase.Parameter.XmlName">
+	<summary>
+ Returns name of the xml root for the class
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:ModelBase.ModelBase.Configuration">
+	<summary>
+ Currently used configuration for which this model belongs
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>Is not saved to xml</remarks>
+</member><member name="P:ModelBase.ModelBase.XmlName">
+	<summary>
+ Returns name of the xml root for the class
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ModelBase.ModelBase.BeforeCalculate">
+	<summary>
+ Sets all parameters and resizes arrays based on ExperimentTime which must be already set
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ModelBase.ModelBase.Cycle">
+	<summary>
+ Calculates current step
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ModelBase.ModelBase.UndoLastCalculatedStep">
+	<summary>
+ Used to ensure that all claculating will be correct after pause/restart
+ </summary>
+	<remarks></remarks>
+</member><member name="M:ModelBase.ModelBase.GetValueByNameAndTime(System.String,System.Decimal)">
+	<summary>
+ Gets calculated value by its name and time; used in calculating for linking models
+ </summary>
+	<param name="valueName"></param>
+	<param name="time"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ModelBase.ModelBase.GetValueByTime(ModelBase.Value,System.Decimal)">
+	<summary>
+ Gets calculated value at given time; used while refreshing chart
+ </summary>
+	<param name="value"></param>
+	<param name="time"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ModelBase.ModelBase.GetLastCalculatedTime">
+	<summary>
+ Gets max time which is surely calculated
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:ModelBase.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:ModelBase.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:ModelBase.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member><member name="P:ModelBase.Value.GroupName">
+	<summary>
+ Name of the group to which this value belongs
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:ModelBase.Value.InitValueVisible">
+	<summary>
+ If true InitValue will be shown in the grid on main form
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:ModelBase.Value.XmlName">
+	<summary>
+ Returns name of the xml root for the class
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ModelBase.IModel.GetValueByNameAndTime(System.String,System.Decimal)">
+	<summary>
+ Gets calculated value by its name and time; used in calculating for linking models
+ </summary>
+	<param name="valueName"></param>
+	<param name="time"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ModelBase.IModel.GetValueByTime(ModelBase.Value,System.Decimal)">
+	<summary>
+ Gets calculated value at given time; used while refreshing chart
+ </summary>
+	<param name="value"></param>
+	<param name="time"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ModelBase.IModel.GetLastCalculatedTime">
+	<summary>
+ Gets max time which is surely calculated
+ </summary>
+</member><member name="M:ModelBase.IModel.UndoLastCalculatedStep">
+	<summary>
+ Used to ensure that all claculating will be correct after pause/restart
+ </summary>
+	<remarks></remarks>
+</member><member name="P:ModelBase.IModel.Configuration">
+	<summary>
+ Currently used configuration for which this model belongs
+ </summary>
+</member><member name="P:ModelBase.Configuration.Description">
+	<summary>
+ Configuration's description in RTF format
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ModelBase.Configuration.Save">
+	<summary>
+ Saves configuration to its file name
+ </summary>
+	<returns></returns>
+	<remarks>Exeption-safe</remarks>
+</member><member name="M:ModelBase.Configuration.SaveResult(System.String)">
+	<summary>
+ Saves result to file with given name
+ </summary>
+	<param name="fileName"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ModelBase.Configuration.SaveSelection(System.String)">
+	<summary>
+ Saves selection to file with given name
+ </summary>
+	<param name="fileName"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:ModelBase.ObjectBase.XmlName">
+	<summary>
+ Returns name of the xml root for the class
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ModelBase.ObjectBase.GetString(System.Xml.XmlElement,System.String)">
+	<summary>
+ Gets value from attribute of node like <node attribute="value"/>
+	</summary>
+	<param name="currentElement"></param>
+	<param name="attributeName"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:ModelBase.ObjectBase.SetAttribute(System.Xml.XmlElement,System.String,System.String)">
+	<summary>
+ Sets value to attribute of node
+ </summary>
+	<param name="currentElement"></param>
+	<param name="attributeName"></param>
+	<param name="attributeValue"></param>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

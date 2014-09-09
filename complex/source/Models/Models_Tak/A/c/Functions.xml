@@ -1,0 +1,195 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Functions
+</name>
+</assembly>
+<members>
+<member name="M:Functions.MathExpression.TestBrackets(System.String)">
+	<summary>
+ Used to test if brackets in given expressin are correct
+ </summary>
+	<param name="expression">string with expression to be tested</param>
+	<returns>true if correct, false if expression is wrong</returns>
+</member><member name="M:Functions.MathExpression.TestExpression(System.String,System.Collections.Generic.List{System.String})">
+	<summary>
+ Used to test if given expression is correct
+ </summary>
+	<param name="expression">string with expression to be tested</param>
+	<returns>true if correct, false if expression is wrong</returns>
+	<remarks></remarks>
+</member><member name="M:Functions.MathExpression.TestTimeExpression(System.String)">
+	<summary>
+ Used to test if given expression is correct
+ </summary>
+	<param name="expression">string with expression to be tested</param>
+	<returns>true if correct, false if expression is wrong</returns>
+	<remarks></remarks>
+</member><member name="M:Functions.MathExpression.EvaluateTimeExpression(System.String,System.Double)">
+	<summary>
+ Evaluates given math expression. 
+ Supported functions: sin, cos, tan, sqrt, abs, exp, log, factorial.
+ Supported operations: +, -, /, \, %, *, (, ).
+ Other supported primitives: time vaiable (see const region how to write it in expression)
+ </summary>
+	<param name="expression">Math expression to be evaluated</param>
+	<param name="timeValue">Time to be put into expression</param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Functions.MathExpression.FixDouble(System.String)">
+	<summary>
+ Used to fix string representation of double value with current decimal separator
+ </summary>
+	<param name="doubleValue"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="F:Functions.MathExpression.m_Primatives">
+	<summary>
+ Contians pairs textName-value (string) which would be parsed while evaluating expression
+ </summary>
+</member><member name="M:Functions.MathExpression.EvaluateExpression(System.String)">
+	<summary>
+ Evaluates the expression.
+ Supported functions: sin, cos, tan, sqrt, abs, exp, log, factorial.
+ Supported operations: +, -, /, \, %, *, (, ).
+ </summary>
+	<param name="expression"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Functions.MathExpression.Factorial(System.Double)">
+	<summary>
+ Returns the factorial of the expression.
+ </summary>
+	<param name="value"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Functions.Folder.FolderIsEmpty(System.String)">
+	<summary>
+ Returns true is directory with given full name does not contain any file or folder
+ </summary>
+	<param name="folderName"></param>
+	<returns></returns>
+	<remarks>Check if directory exists is not performed here</remarks>
+</member><member name="M:Functions.Folder.DeleteEmptyFolders(System.String)">
+	<summary>
+ Used to delete all empty subfolders in given folder and this folder if after all it became empty
+ </summary>
+	<param name="folderName"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Functions.File.MoveFile(System.String,System.String,System.String@)">
+	<summary>
+ Exeption-safe moves a specified file to a new location
+ </summary>
+	<param name="sourceFileName"></param>
+	<param name="destFileName"></param>
+	<remarks></remarks>
+</member><member name="M:Functions.File.DeleteFile(System.String,System.String@)">
+	<summary>
+ Exeption-safe deletes a specified file 
+ </summary>
+	<param name="fileName"></param>
+	<remarks></remarks>
+</member><member name="M:Functions.File.FileIsAccessible(System.String)">
+	<summary>
+ This function used to check if we can access file with given name
+ </summary>
+	<param name="fileName"></param>
+	<returns></returns>
+	<remarks>Should be used before checkin</remarks>
+</member><member name="M:Functions.File.CheckSizeAndDeleteIfTooBig(System.String,System.Int64)">
+	<summary>
+ Check, does file exists, and it's length less that maxSize
+ If length more, that maxSize - delete it
+ Use this function for write info to log files
+ </summary>
+	<param name="fileName">path to file</param>
+	<param name="maxSize">max size that alloved for this size (bytes)</param>
+	<remarks></remarks>
+</member><member name="M:Functions.File.LogInfo(System.String,System.String)">
+	<summary>
+ The method add text info to the specified file
+ if file doesn't exist it should be created
+ </summary>
+	<param name="filePath">path to file</param>
+	<param name="info">info to be logged</param>
+	<remarks></remarks>
+</member><member name="M:Functions.MathFunctions.Integral(System.Double,System.Double,System.Double[])">
+	<summary>
+ Calculates integral using Simpson formula
+    /
+   |           h
+   | f(x)dx =  - (f   + 4 f   + 2 f + 4 f  + ... + 2 f   + 4 f    + f )
+   |           3   0       1       2     3            N-2     N-1    N
+  /
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Functions.MathFunctions.Beta(System.Double,System.Double)">
+	<summary>
+ Calculates beta function 
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Functions.MathFunctions.IntBeta(System.Int32,System.Int32,System.Double,System.Double)">
+	<summary>
+ Calculates beta function integral
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Functions.MathFunctions.Gauss(System.Double,System.Double,System.Double)">
+	<summary>
+ Calculates Gauss function where
+ a=Mx, b - sigma
+ </summary>
+	<param name="x"></param>
+	<param name="a"></param>
+	<param name="b"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Functions.MathFunctions.IntGauss(System.Int32,System.Int32,System.Double,System.Double)">
+	<summary>
+ Calculates gauss function integral
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Functions.MathFunctions.IntPower(System.Int32,System.Int32,System.Double)">
+	<summary>
+ Calculates power function integral
+ </summary>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:Functions.MathFunctions.ZeroAbs(System.Double)">
+	<summary>
+ If x&gt;0 returns x otherwise returns zero
+ </summary>
+	<param name="x"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:Functions.MathFunctions">
+	<summary>
+ All integrals here are calculated using Simpson's formula
+    /
+   |           h
+   | f(x)dx =  - (f   + 4 f   + 2 f + 4 f  + ... + 2 f   + 4 f    + f )
+   |           3   0       1       2     3            N-2     N-1    N
+  /
+ </summary>
+	<remarks></remarks>
+</member><member name="M:Functions.Text.TrimText(System.String,System.Windows.Forms.Control)">
+	<summary>
+ Trims the end of the given text if it is longer then control and then add ...
+ </summary>
+	<param name="text"></param>
+	<param name="control"></param>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:Functions.Text.IsBigFontUsed">
+	<summary>
+ If true - user choose large font in windows settings
+ </summary>
+	<remarks>Used to fix corrupted views</remarks>
+</member>
+</members>
+</doc>
