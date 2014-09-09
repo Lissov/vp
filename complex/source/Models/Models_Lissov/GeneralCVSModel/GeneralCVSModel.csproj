@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{457A6294-AB7C-4919-92EF-9C4A9200E235}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GeneralCVSModel</RootNamespace>
+    <AssemblyName>GeneralCVSModel</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>0</FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Client\bin\Debug\Archive\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Client\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Client\Referencies\DevExpress.Data.v7.3.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Client\Referencies\DevExpress.Utils.v7.3.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Client\Referencies\DevExpress.XtraBars.v7.3.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Client\Referencies\DevExpress.XtraCharts.v7.3.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v7.3.UI, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Client\Referencies\DevExpress.XtraCharts.v7.3.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Client\Referencies\DevExpress.XtraEditors.v7.3.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Client\Referencies\DevExpress.XtraGrid.v7.3.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Client\Referencies\DevExpress.XtraLayout.v7.3.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Client\Referencies\DevExpress.XtraTreeList.v7.3.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.0.3930.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Client\Referencies\DocumentFormat.OpenXml.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TeeChart, Version=2.0.2469.25746, Culture=neutral, PublicKeyToken=9c8126276c77bdb7">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Client\Referencies\TeeChart.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConfigurationEditor\ConfigurationEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ConfigurationEditorControl.Designer.cs">
+      <DependentUpon>ConfigurationEditorControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ConfigurationGraphController.cs" />
+    <Compile Include="ConfigurationEditor\ControlBaroreceptionModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ControlBaroreceptionModel.Designer.cs">
+      <DependentUpon>ControlBaroreceptionModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ControlCVSModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ControlCVSModel.Designer.cs">
+      <DependentUpon>ControlCVSModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ControlFluidsModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ControlFluidsModel.Designer.cs">
+      <DependentUpon>ControlFluidsModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ControlGeneralCVSModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ControlGeneralCVSModel.Designer.cs">
+      <DependentUpon>ControlGeneralCVSModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ControlHeartModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ControlHeartModel.Designer.cs">
+      <DependentUpon>ControlHeartModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ControlKidneyModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ControlKidneyModel.Designer.cs">
+      <DependentUpon>ControlKidneyModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ControlLoads.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ControlLoads.Designer.cs">
+      <DependentUpon>ControlLoads.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ControlNoModelSelected.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ControlNoModelSelected.Designer.cs">
+      <DependentUpon>ControlNoModelSelected.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigurationEditor\IModelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CVSSubModels.cs" />
+    <Compile Include="GeneralModel.cs" />
+    <Compile Include="GeneralSetupControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GeneralSetupControl.Designer.cs">
+      <DependentUpon>GeneralSetupControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModelValidator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultsTable\AddOutputForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResultsTable\AddOutputForm.Designer.cs">
+      <DependentUpon>AddOutputForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResultsTable\ResultsTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ResultsTable\ResultsTable.Designer.cs">
+      <DependentUpon>ResultsTable.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Controls\LissovLog\LissovLog.csproj">
+      <Project>{287CCF74-DB6F-4981-97E2-5EC1CB8BCC7B}</Project>
+      <Name>LissovLog</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Shared\Controls\VisualControls\VisualControls.csproj">
+      <Project>{F4E8C5F5-CA23-4508-B540-A87068EA7329}</Project>
+      <Name>VisualControls</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Shared\LissovBase\LissovBase.csproj">
+      <Project>{6F1EBBDA-15A9-4648-8702-50C397FB42B8}</Project>
+      <Name>LissovBase</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Shared\ModelBase\ModelBase.vbproj">
+      <Project>{2378DD4D-2EC3-49BD-8756-1011FE926FCB}</Project>
+      <Name>ModelBase</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Model_Baroreception\Model_Baroreception.csproj">
+      <Project>{AD39FF58-DD91-452E-BC7F-B94E00D8E552}</Project>
+      <Name>Model_Baroreception</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Model_CVS\Model_CVS.csproj">
+      <Project>{CFF39F3C-76B8-48BF-B3FE-B688722F0442}</Project>
+      <Name>Model_CVS</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Model_Fluids\Model_Fluids.csproj">
+      <Project>{BA8546D8-E9C8-412C-AD51-5D4B81A66A41}</Project>
+      <Name>Model_Fluids</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Model_HeartStable\Model_HeartStable.csproj">
+      <Project>{A9A9F605-F5D9-42E8-8F28-CF80FD39D450}</Project>
+      <Name>Model_HeartStable</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Model_Kidney\Model_Kidney.csproj">
+      <Project>{EE05AA91-6FE4-4478-BB93-7455987C5888}</Project>
+      <Name>Model_Kidney</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model_Load\Model_Load.csproj">
+      <Project>{448AB068-C543-4D6A-863A-DB4B95B8576B}</Project>
+      <Name>Model_Load</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ConfigurationEditor\ConfigurationEditorControl.resx">
+      <DependentUpon>ConfigurationEditorControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationEditor\ControlBaroreceptionModel.resx">
+      <DependentUpon>ControlBaroreceptionModel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationEditor\ControlCVSModel.resx">
+      <DependentUpon>ControlCVSModel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationEditor\ControlFluidsModel.resx">
+      <DependentUpon>ControlFluidsModel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationEditor\ControlGeneralCVSModel.resx">
+      <DependentUpon>ControlGeneralCVSModel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationEditor\ControlHeartModel.resx">
+      <DependentUpon>ControlHeartModel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationEditor\ControlHeartModel.ru.resx">
+      <DependentUpon>ControlHeartModel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationEditor\ControlKidneyModel.resx">
+      <DependentUpon>ControlKidneyModel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationEditor\ControlLoads.resx">
+      <DependentUpon>ControlLoads.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationEditor\ControlNoModelSelected.resx">
+      <DependentUpon>ControlNoModelSelected.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralSetupControl.resx">
+      <DependentUpon>GeneralSetupControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="ResultsTable\AddOutputForm.resx">
+      <DependentUpon>AddOutputForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResultsTable\ResultsTable.resx">
+      <DependentUpon>ResultsTable.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\GeneralCVSModel.ResultsTable.TimePoint.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

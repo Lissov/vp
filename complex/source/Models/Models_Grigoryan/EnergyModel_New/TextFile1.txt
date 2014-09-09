@@ -1,0 +1,88 @@
+﻿Vc(t) = a1*Ne(t)
+
+IF C3min <= C3(t) <= C3max
+	dC3(t)/dt = a2*(Vs(t)- Vc(t))
+ELSE
+	dC3(t)/dt = 0 
+END IF
+IF C3min > C3(t)
+	C3(t) = C3min 
+ELSEIF C3max  < C3(t)
+	C3(t) = C3max 
+END IF
+
+IF C2min <= C2(t) AND C2(t) <= C2max
+	dC2(t)/dt = a3*(Vc(t)- Vs(t))
+ELSE
+	dC2(t)/dt = 0 
+END IF
+IF C2min > C2(t)
+	C2(t) = C2min 
+ELSEIF C2max  < C2(t)
+	C2(t) = C2max 
+END IF
+
+C23(t) = C2(t)/(A + C3(t))
+IF A.Value + C3max.Value <> 0 Then
+	C23min = C2min/(A+C3max)
+ELSE
+	C23min = 0
+END IF
+IF A.Value + C3min.Value <> 0 Then
+	C23max = C2max/(A+C3min)
+ELSE
+	C23max = 0
+END IF
+
+IF C23min <= C23(t) AND C23(t) <= C23max
+	Vs1(t) = a4 * C23(t)
+ELSE
+	dVs1(t)/dt =  0 
+END IF
+
+Vs2 =  a5 * Sm
+
+dVs3(t)/dt =  0 
+
+Vs(t) = Vs1(t) + Vs2(t) + Vs3(t)
+
+Psimin = 0 
+
+IF C23(t) > Hi1
+	dPsi(t)/dt = b1 - gamma*Psi(t)
+ELSE
+	dPsi(t)/dt =  - gamma*Psi(t) 
+END IF
+
+Bmin = 0
+
+IF O2(t) > Hi2
+	dB(t)/dt = b2*C23(t) - B(t)
+ELSE
+	dB(t)/dt =  0
+END IF
+
+
+IF (Sm_max > Sm(t)) AndAlso (Psi(t)) > 0)
+	dSm(t)/dt = kSm1 * (Sm(t) - Sm_min)* Psi(t)
+ELSEIF (Sm_min  < Sm(t)) AndAlso (Psi(t) = 0)
+	dSm(t)/dt =  kSm2 * (Sm_max - Sm(t))
+ELSE
+	dSm(t)/dt =  0
+END IF
+
+O2min = 0
+
+dO2(t) / dt = sigma * (Vcm(t) - Vs(t))
+
+IF Rmp.Value <> 0 Then
+	Vcm(t) = (Pco2 - Pmo2)/Rmp
+ELSE
+	Vcm(t) = 0
+END IF
+
+IF Rcc.Value <> 0 Then
+	Pco2 = (Pcap - Pco2)/Rcc
+ELSE
+	Pco2 = 0
+END IF
