@@ -1,0 +1,84 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using LissovBase;
+
+namespace VisualControls.Helpers
+{
+    public static class TimeHelper
+    {
+
+        public enum MeasureUnit
+        {
+            Second = 0,
+            Minute = 1,
+            Hour = 2,
+            Day = 3
+        }
+
+        public struct TimeDivider
+        {
+            public string Unit;
+            public decimal Divider;
+            public MeasureUnit Measure;
+        }
+
+        private static decimal MINUTE = 60;
+        private static decimal HOUR = MINUTE * 60;
+        private static decimal DAY = HOUR * 24;
+
+        private static decimal SECONDS_LIMIT =  5 * MINUTE;
+        private static decimal MINUTES_LIMIT = 3 * HOUR;
+        private static decimal HOURS_LIMIT = 3 * DAY;
+
+
+        public static TimeDivider GetOptimalUnit(decimal time)
+        {
+            TimeDivider res;
+            if (Math.Abs(time) > HOURS_LIMIT)
+            {
+                res.Unit = Constants.Units.day;
+                res.Measure = MeasureUnit.Day;
+                res.Divider = GetDivider(res.Measure);
+                return res;
+            }
+
+            if (Math.Abs(time) > MINUTES_LIMIT)
+            {
+                res.Unit = Constants.Units.hour;
+                res.Measure = MeasureUnit.Hour ;
+                res.Divider = GetDivider(res.Measure);
+                return res;
+            }
+
+            if (Math.Abs(time) > SECONDS_LIMIT)
+            {
+                res.Unit = Constants.Units.minute;
+                res.Measure = MeasureUnit.Minute ;
+                res.Divider = GetDivider(res.Measure);
+                return res;
+            }
+
+            res.Unit = Constants.Units.second;
+            res.Measure = MeasureUnit.Second;
+            res.Divider = GetDivider(res.Measure);
+            return res;
+        }
+
+        public static decimal GetDivider(MeasureUnit measure)
+        {
+            switch (measure)
+            {
+                case MeasureUnit.Day: return DAY;
+                case MeasureUnit.Hour : return HOUR;
+                case MeasureUnit.Minute: return MINUTE;
+                case MeasureUnit.Second : return 1;
+                default:
+                    return 1;
+            }
+        }
+
+
+    }
+}
