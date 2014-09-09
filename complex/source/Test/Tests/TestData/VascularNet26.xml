@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NetConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Simple</Name>
+  <Comments>Two circles of blood flow with capillary compartments for combination with Liquids model. 
+Allows one-axis simple orthostatic change.
+</Comments>
+  <CompartmentCount>26</CompartmentCount>
+  <CompartmentNames>
+    <string>Arch of aorta</string>
+    <string>Central vein</string>
+    <string>Pulmonary arterie</string>
+    <string>Pulmonary vein</string>
+    <string>Carotid sinus</string>
+    <string>Brain arterie</string>
+    <string>Brain vein</string>
+    <string>Hand arterie</string>
+    <string>Hand vein</string>
+    <string>Abdomen arterie</string>
+    <string>Abdomen anostomosis</string>
+    <string>Abdomen vein</string>
+    <string>Kidney capillar</string>
+    <string>Hip arterie</string>
+    <string>Hip anostomosis</string>
+    <string>Hip vein</string>
+    <string>Shin arterie</string>
+    <string>Shin anostomosis</string>
+    <string>Shin vein</string>
+    <string>Stop arterie</string>
+    <string>Stop vein</string>
+    <string>System capillar</string>
+    <string>Skin capillar</string>
+    <string>Pulmonary capillar</string>
+    <string>Brain capillares</string>
+    <string>Kidney arterie</string>
+  </CompartmentNames>
+  <CompartmentIDs>
+    <string>ArchOfAorta</string>
+    <string>CentralVein</string>
+    <string>PulmonaryArterie</string>
+    <string>PulmonaryVein</string>
+    <string>CarotidSinus</string>
+    <string>BrainArterie</string>
+    <string>BrainVein</string>
+    <string>HandArterie</string>
+    <string>HandVein</string>
+    <string>AbdomenArterie</string>
+    <string>AbdomenAnostomosis</string>
+    <string>AbdomenVein</string>
+    <string>KidneyCapillar</string>
+    <string>HipArterie</string>
+    <string>HipAnostomosis</string>
+    <string>HipVein</string>
+    <string>ShinArterie</string>
+    <string>ShinAnostomosis</string>
+    <string>ShinVein</string>
+    <string>StopArterie</string>
+    <string>StopVein</string>
+    <string>SystemCapillar</string>
+    <string>SkinCapillar</string>
+    <string>PulmonaryCapillar</string>
+    <string>BrainCapillares</string>
+    <string>KidneyArterie</string>
+  </CompartmentIDs>
+  <Links>
+    <ArrayOfInt>
+      <int>4</int>
+      <int>7</int>
+      <int>9</int>
+    </ArrayOfInt>
+    <ArrayOfInt />
+    <ArrayOfInt>
+      <int>23</int>
+    </ArrayOfInt>
+    <ArrayOfInt />
+    <ArrayOfInt>
+      <int>5</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>24</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>1</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>8</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>1</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>10</int>
+      <int>25</int>
+      <int>13</int>
+      <int>21</int>
+      <int>22</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>11</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>1</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>11</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>14</int>
+      <int>16</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>15</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>11</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>17</int>
+      <int>19</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>18</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>15</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>20</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>18</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>11</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>11</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>3</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>6</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>12</int>
+    </ArrayOfInt>
+  </Links>
+  <DepartmentCount>7</DepartmentCount>
+  <DepartmentNames>
+    <string>All</string>
+    <string>Lungs</string>
+    <string>Head</string>
+    <string>Abdomen</string>
+    <string>Legs</string>
+    <string>Hands</string>
+    <string>Bottom</string>
+  </DepartmentNames>
+  <Departments>
+    <ArrayOfInt>
+      <int>0</int>
+      <int>1</int>
+      <int>2</int>
+      <int>3</int>
+      <int>4</int>
+      <int>5</int>
+      <int>6</int>
+      <int>7</int>
+      <int>8</int>
+      <int>9</int>
+      <int>10</int>
+      <int>11</int>
+      <int>12</int>
+      <int>13</int>
+      <int>14</int>
+      <int>15</int>
+      <int>16</int>
+      <int>17</int>
+      <int>18</int>
+      <int>19</int>
+      <int>20</int>
+      <int>21</int>
+      <int>22</int>
+      <int>23</int>
+      <int>24</int>
+      <int>25</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>2</int>
+      <int>3</int>
+      <int>23</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>4</int>
+      <int>5</int>
+      <int>6</int>
+      <int>24</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>9</int>
+      <int>10</int>
+      <int>11</int>
+      <int>12</int>
+      <int>21</int>
+      <int>22</int>
+      <int>25</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>13</int>
+      <int>14</int>
+      <int>15</int>
+      <int>16</int>
+      <int>17</int>
+      <int>18</int>
+      <int>19</int>
+      <int>20</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>7</int>
+      <int>8</int>
+    </ArrayOfInt>
+    <ArrayOfInt>
+      <int>13</int>
+      <int>14</int>
+      <int>15</int>
+      <int>16</int>
+      <int>17</int>
+      <int>18</int>
+      <int>19</int>
+      <int>20</int>
+      <int>9</int>
+      <int>10</int>
+      <int>11</int>
+      <int>12</int>
+      <int>21</int>
+      <int>25</int>
+    </ArrayOfInt>
+  </Departments>
+  <RightBeforeHeart>1</RightBeforeHeart>
+  <RightAfterHeart>2</RightAfterHeart>
+  <LeftBeforeHeart>3</LeftBeforeHeart>
+  <LeftAfterHeart>0</LeftAfterHeart>
+  <Kidney>12</Kidney>
+</NetConfiguration>

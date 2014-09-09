@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4689E7A8-FDA7-45E5-ABA4-576B26A5FA33}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tests</RootNamespace>
+    <AssemblyName>Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Utils.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="TeeChart, Version=2.0.2469.25746, Culture=neutral, PublicKeyToken=9c8126276c77bdb7">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Client\bin\Debug\TeeChart.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GeneralLissovModelsTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AuthoringTests.txt" />
+    <None Include="TestData\VascularNet26.xml">
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TestData\Basic.config">
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Client\Client.vbproj">
+      <Project>{2BB548E9-B05F-43E7-94EF-E155331F0184}</Project>
+      <Name>Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Models\Models_Lissov\Model_Baroreception\Model_Baroreception.csproj">
+      <Project>{AD39FF58-DD91-452E-BC7F-B94E00D8E552}</Project>
+      <Name>Model_Baroreception</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Models\Models_Lissov\Model_CVS\Model_CVS.csproj">
+      <Project>{CFF39F3C-76B8-48BF-B3FE-B688722F0442}</Project>
+      <Name>Model_CVS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Models\Models_Lissov\Model_Fluids\Model_Fluids.csproj">
+      <Project>{BA8546D8-E9C8-412C-AD51-5D4B81A66A41}</Project>
+      <Name>Model_Fluids</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Models\Models_Lissov\Model_HeartStable\Model_HeartStable.csproj">
+      <Project>{A9A9F605-F5D9-42E8-8F28-CF80FD39D450}</Project>
+      <Name>Model_HeartStable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Models\Models_Lissov\Model_Kidney\Model_Kidney.csproj">
+      <Project>{EE05AA91-6FE4-4478-BB93-7455987C5888}</Project>
+      <Name>Model_Kidney</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Models\Models_Lissov\Model_Load\Model_Load.csproj">
+      <Project>{448AB068-C543-4D6A-863A-DB4B95B8576B}</Project>
+      <Name>Model_Load</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\Controls\LissovLog\LissovLog.csproj">
+      <Project>{287CCF74-DB6F-4981-97E2-5EC1CB8BCC7B}</Project>
+      <Name>LissovLog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\LissovBase\LissovBase.csproj">
+      <Project>{6F1EBBDA-15A9-4648-8702-50C397FB42B8}</Project>
+      <Name>LissovBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Shared\ModelBase\ModelBase.vbproj">
+      <Project>{2378DD4D-2EC3-49BD-8756-1011FE926FCB}</Project>
+      <Name>ModelBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
