@@ -1,0 +1,734 @@
+﻿---------------------------------------------------------------------------------
+
+V.1.3.0.1
+
+Исправлено:
+	Старые модели перенаправлены в папку Archive
+	Переписна загрузка моделей - испозуется служебная папка Modelling tool tempopary data которая автосоздается-автоочищается
+	Появилась возможность компилирвать вновьсозданные модели не меняя имя файла
+	
+---------------------------------------------------------------------------------
+
+V.1.3.0.0
+
+Добавлено:
+	Базовая версия создания моделей из комплекса.
+	Есть возможность задать базовые свойства модели, добавить переменные и параметры.
+	! Уравнения пока задаются и сохранятся как многострочная строка, 
+	  пользователь должен вписать их сам согласно приведенного в примере синтаксиса.
+	Поддерживается сохранение-редактирование моделей, предпросмотр кода и компиляция в длл.
+
+---------------------------------------------------------------------------------
+
+V.1.2.2.5
+
+Исправлено:
+Ускорена Ггенерация .xlsx - документов
+! Ускорения достигнуто за счет потери методами универсальности - начиная с этой версии работа методов с произвольгыми документами не гарантирована
+
+---------------------------------------------------------------------------------
+
+V.1.2.2.4
+
+Добавлено:
+	Сервис Modelling tool chart service - если не установлен автоматически ставится и запускается на старте приложения.
+	
+Сервис должен решить проблему с ошибкой ТиЧарта "expired"
+	
+Настройки сервиса - в конфигурационном файле Modelling tool chart service.exe.config
+ClearLogAtSizeMb - макс размер (в мегабайтах) файла Modelling tool chart service log.txt используемого сервисом для логирования
+SleepTimeSec - время в секундах простоя сервиса - ставить большое чаще чем раз в сутки ему делать нечего
+ProcessPriorityClass - приоритет сервисного процесса - по умолчанию Idle, допустимые значения: Idle, BelowNormal, Normal, AboveNormal, High, RealTime
+
+
+---------------------------------------------------------------------------------
+
+V.1.2.2.3
+
+Добавлено:
+	Class AppStaticClass - использовать его вместо My.Application овместимости с разными версиями студии
+	
+Исправлено:
+	 Обновлены проект LissovBase и модели Models_Lissov
+	 Исправлены хинты на главном графике (в целочисленных значениях кратных 10 обрезались все 0)
+	 
+Изменения в проекте InputFunction:
+- добавлена справка InputControlHelp.mht и доступ к ней из интерфейса
+- добавлена поддержка описания стандартных функций в виде формулы (если задана формула - будет использована вместо картинки)
+- добавлена формула zeroone
+- добавлена возможность обновления графика предпросмотра
+- исправлен график - теперь показываются также минимальное и максимальное значения
+	
+---------------------------------------------------------------------------------
+
+V.1.2.2.2
+
+Добавлено:
+	Сохранение конфигурации в другой файл из главного меню
+	Сохранение изображения с графика из контекстного меню
+	Бета-функция в инпут-контроле
+	
+---------------------------------------------------------------------------------
+
+V.1.2.2.1
+
+Добавлено:
+	Цвета и надписи дуг в графе конфигурации
+
+---------------------------------------------------------------------------------
+
+V.1.2.2.0
+
+Добавлено:
+	Возможность просмотра графа конфигурации при редактировании-создании конфигурации. 
+	Для построения графа используется Microsoft.GLEE
+	Добавлен проект Graph и кнопка ViewGrapg в ConfigEditForm
+
+---------------------------------------------------------------------------------
+
+V.1.2.1.0
+
+Добавлено:
+	Полоное сохранение дпри закрытиии приложения и восстановление при открытии выравнивания док-панелей
+	(ранее сохранялось только какие панели видимы)
+
+---------------------------------------------------------------------------------
+
+V.1.2.0.10
+
+Исправлено:
+	fixed bug "unable to close hidden panel using Customize form";
+	
+	shortcut for Customize form changed to ctrl+U
+	
+	fixed exception with editing font when user has no saved preferences
+
+
+---------------------------------------------------------------------------------
+
+V.1.2.0.9
+
+Исправлено:
+	fixed bug "configuration becames corrupted after cancelled editing";
+		changed files: MainForm, ObjectBase, Configuration
+		Since now ObjectBase implements ICloneable
+		
+	fixed bug "Нужно сделать автоматическое масштабирование оси значений на графике не до мин/макс 
+	           значения (там возможно стоит +1), а с "полем" 3-5%, а то если вывести одновременно 
+	           графики со значениями 0 и 5000, то их не видно - они сливаются с осями."
+	    Since now: if 3%> 1 -> 3% added otherwise - 1 (as it used to be)
+	    
+	Help updated
+
+---------------------------------------------------------------------------------
+
+V.1.2.0.8
+
+
+Добавлено:
+
+	New class SwitchParameter - парамет типа Булеан - для управления моделью (пример: включен ли такой-то регулятор)
+
+	Main form: ModelManagement tab with grid which displays SwitchParameters of selected model, 
+	           visible only if at least one switch parameter exists
+	
+	IModel:  Function GetSwitchParameters() As List(Of SwitchParameter)
+	
+	ModelBase: Public Property SwitchParameters() added, 
+	           changed: CollectLists, all from-to xml
+
+
+---------------------------------------------------------------------------------
+
+V.1.2.0.7
+
+
+Добавлено:
+
+	Main form: 
+		new item 'Set marks' added to the chart's context menu with possiblity to set marks 
+		for all shown in grid values
+
+	Client: added class MarkItem, form SetMarkItems
+	
+	UserPreference: added Property MaxMarksCount (Maximum amount of shown marks)
+	
+	CustomizeForm: on tab System controls to edit MaxMarksCount added
+
+	SavedConfiguration: functions GetModelByName
+	
+	Help updated
+
+---------------------------------------------------------------------------------
+
+V.1.2.0.6
+
+Исправлено:
+	InputFunctionControl: fixed exception on some corrupted formulas
+	Main form:
+		while showing results in progress mixed time units were used - fixed
+		when time unit was not sec hiding results till time corrupted results - fixed
+	
+Добавлено:
+	Client: error form for unhandled exception	
+
+---------------------------------------------------------------------------------
+
+V.1.2.0.5
+
+Исправлено:
+		
+	ModelBase:
+		Fix in opening .setup files
+---------------------------------------------------------------------------------
+
+V.1.2.0.4
+
+Добавлено:
+
+	Now it is possible to link values with constants
+
+	MainForm:
+		support for UserPreference.Result_SaveOnlyVisiblePoints implemented
+		progress bar for opening results
+
+	Class ResultGridView:
+		Now grid is saved/restored with configuration to its xml file
+		
+	Configuration:
+		Property ResultGridViewData added
+		
+	IModel (+ same Overridable in ModelBase):
+		function GetValue 
+		ReadOnly Property HasVisibleValues 
+		Function GetLastCalculatedStep() As Integer 
+		ReadOnly Property IsOpenedFromResultFile() As Boolean
+		
+	ModelBase:
+		Saving/opening parameters with calculation result
+		
+	Value:
+		Property LinkConst
+		
+	MenuItem:
+		Property Enabled
+		
+	Help:
+		new topics added
+
+Исправлено:
+	
+	MainForm: 
+		fix for showing results in grid
+		locking controls for history nodes
+
+---------------------------------------------------------------------------------
+
+V.1.2.0.3
+
+Добавлено:
+
+	UserPreference:
+		properties for saving results:
+		Result_SaveOnlyVisiblePoints, Report_SaveOnlyVisiblePoints, ResultImage_SaveColoured
+		
+	CustomizeForm:
+		Tab save for editing properties for saving results
+		
+	MainForm:
+		support for property ResultImage_SaveColoured, Report_SaveOnlyVisiblePoints
+		
+	IModel, ModelBase:
+		Property ShownStep added
+		
+	New class ObjectList added to the project Modelbasse (supports sorting, To-From Xml)
+	New class ObjectDictionary added to the project Modelbasse (supports To-From Xml)
+		
+---------------------------------------------------------------------------------
+
+V.1.2.0.2
+
+Добавлено:
+	MainForm: measure unit for experiment time + auto time unit for grid gesult
+
+Исправлено:
+	MainForm: 
+		Models loading - on exception proper message is shown
+		
+	Configuration:
+		 experiment time added; after opening configuration its experiment time is used
+		 
+	Help:
+		new topics added
+		
+	VisualControls.Helpers.TimeHelper:
+		enum MeasureUnit added
+
+
+---------------------------------------------------------------------------------
+
+V.1.2.0.1
+
+Добавлено:
+	Добавлено: 
+		VisualControls.Hepers.TimeHelper - статический класс с методом GetOptimalUnit, 
+		    который возвращает "оптимальную" единицу измерения времени для заданного времени (
+		    например для 86400с - 24 часа).
+		В LissovBase есть набор функций (унаследованных от базового Function)
+		В VisualControls.Editors добавлены FunctionEditPanel и FunctionEditForm 
+		для реактирования таких функций (а также ParameterFunctionControl и 
+		ParameterFunctionEditForm - в них кроме редактирования параметров функции 
+		есть возможность выбора типа функции).
+	
+	Пашины модели приведены в соответствие с новейшими высочайшими стандартами комплекса.
+		
+---------------------------------------------------------------------------------
+
+V.1.2.0.0
+
+Добавлено:
+    properties in UserPreference:
+		ClientButtons - Allows us to remember which ribbon buttons are hidden
+		ShowInternalValues - Allows us to hide variables with type 'Internal'
+	Customize form:
+		page 'Customize buttons' added
+		
+---------------------------------------------------------------------------------
+
+V.1.1.0.9
+
+New project ClientControls added
+!It uses DevExpress libraries
+
+In this projects the next controls created:
+	ModelsTree - tree with models; 
+	             to initialize it sub SetConfiguration must be called;
+	             can work in usual mode and as value selector
+	             
+	ModelSelector - form with tree which shopuld bu used to select models/values;
+	                not has only one mode - select values
+	                 
+	ModelPropertyEditor - form which should be used to edit model's properties
+	
+	ValuePropertyEditor - form which should be used to edit value's properties
+	
+	ResultGridView - control which allows to show and save calculating result as grid
+
+
+Исправлено:
+	MainForm: 
+		Models loading process optimized
+		ClientPanels list is now used instead of Panels which allows custimizin tab panels
+
+---------------------------------------------------------------------------------
+
+V.1.1.0.8
+
+some bugs fixed
+
+---------------------------------------------------------------------------------
+
+V.1.1.0.7
+
+Исправлено:
+	ModelBase -> BeforeCalculate: updated CalculatingState value
+
+	MainForm: file name added to the header after configuration name
+	
+	ModelOutputsMenuLoader: grouping for values added
+	
+---------------------------------------------------------------------------------
+
+V.1.1.0.6
+
+Добавлено:
+    properties in UserPreference:
+		MaxPointsPerSecond - Maximum amount of shown points per 1 sec ( -1 - all points)
+		ShowHintBevel - Do we need to show bevel for hint
+		HintColor - Color of the hint
+		
+Исправлено:
+		Reference to XtraCharts in Shared-Controls-VisualControls
+		
+		Fix for last value in ModelBase -> GetValueByTime, GetValueByNameAndTime
+
+---------------------------------------------------------------------------------
+
+V.1.1.0.5
+
+Добавлено:
+	Обработка исключений при старте расчета эксперимента
+	
+	DevExpress.XtraCharts added to Client\References
+	
+	MaxChartValue added to client's settings (by default 100000)
+
+---------------------------------------------------------------------------------
+
+V.1.1.0.4
+
+Добавлено:
+	Масштабирование чарта на панели женерал
+	(сохраняемые на закрытии формы свойства LeftScaleIncrement и BottomScaleIncrement)
+
+Исправлено:
+	Хинты на чарте отрисовываются не с помощью тултипов а с помощью лейбов
+	
+	Шрифты с формы настройки применяются не к контролам а к чарту
+
+---------------------------------------------------------------------------------
+
+V.1.1.0.3
+
+Добавлено:	
+	MainForm: shortcuts for menu buttons
+
+    UserPreference: property Font
+    
+    CustomizeForm: font editing
+
+	ModelBase: methods for raising events
+	
+	IModel: Function GetValueByTime - Gets calculated value at given time; used while refreshing chart
+
+	Обновлен Help
+
+Исправлено:
+    MainForm:
+		While refreshing if less then 100% of points is shown last point is added
+		
+	ObjectBase: added property XmlName - to be used as name of the xml root for the class
+	             instead of Me.GetType().Name().Replace("`", "")
+	             (by default returns old value, overrided in Model, value, Parameter,UserPreference)
+
+---------------------------------------------------------------------------------
+
+V.1.1.0.2
+
+Добавлено:	
+	MainForm, UserPreference:
+         property ShowHintPercents – если значение установлено, 
+         то в подсказку будет добавлена информация о 
+         процентном смещении значения относительно начального 
+         (по умолчанию значение не установлено)
+
+	Контекстное меню в дереве для узла истории - кнопка Remove
+	
+	Цвета для серий графика сейчас генерируются из списка контрастных цветов.
+
+	Обновлен Help
+
+Исправлено:
+	Сохранение .sel файлов
+	После открытия .sel файла автоматически обновляется график (если это возможно)
+	
+	Рефреш чарта при показе результатов в процессе расчета
+
+---------------------------------------------------------------------------------
+
+V.1.1.0.1
+
+Добавлено:	
+	Редактривание свойств моделей и переменных 
+	из контекстного меню дерева - пункт Edit
+	
+	Обновлен Help
+	
+---------------------------------------------------------------------------------
+
+V.1.1.0.0
+
+Добавлено:	
+	Открытие сохраненных результатов
+	Подписаны единицы времени
+	Value:
+		свойсво Measure - единица измерения - подписывается на графике
+		
+Исправлено:
+	MainForm:
+		хинт для графика - счас берет линейную аппроксимацию ближайших рассчитанных точек
+		значение по умолчанию для ShownPoints=100, время эксперимента = 10
+		
+	ModelBase:
+		IsControlAlwaysShown теперь Overridable
+	
+
+---------------------------------------------------------------------------------
+
+V.1.0.6.0
+	
+Добавлено:	
+	
+	MainForm:
+		 в дерево добавлен рут с именем конфигурации, при нем - 
+		 контекстное меню с возможностью сохранить-загрузить состояние переменных моделей
+		 
+		 фикс в контекстном меню чарта: 
+		 теперь пункт меню 'Clear hints' есть только когда есть что очищать
+		 
+		 фикс центральной панели: 
+		 теперь если есть всегда видимый контрол, то он будет активным после загрузки конфигурации
+		 
+	CustomizeForm:
+		добавлена закладка View и комбобокс со скинами; 
+		выбранный скин применяется немедленно и сохранятся при закрытии формы
+		
+	UserPreference:
+		добавлено сохранение-загрузка текущего скина
+		
+	Configuration:
+		Function SaveSelection - сохраняет состояние переменных моделей конфмгурации в файл
+		Function SelectionToXmlDocument - сохраняет состояние переменных моделей конфмгурации в хмл документ
+		Sub SelectionFromXml -  загружает состояние переменных моделей конфмгурации из хмл
+		
+	IModel:
+		Function SelectionToXml - сохраняет состояние переменных модели в хмл
+		Sub SelectionFromXml - загружает состояние переменных модели из хмл
+		
+	Value:
+		Function SelectionToXml - сохраняет "Visible" в хмл
+		Sub SelectionFromXml - загружает "Visible" из хмл
+
+---------------------------------------------------------------------------------
+
+V.1.0.5.0
+	
+Добавлено:	
+	
+	MainForm:
+		свойство ShowResultAfterCalculating - обновлять ли график автоматически по окончании расчетов;
+		сохраняется при закрытии формы
+		
+	IModel:
+		Function IsControlAlwaysShown() As Boolean - 
+		if true control will be always shown on the main form
+
+---------------------------------------------------------------------------------
+
+V.1.0.4.0
+
+Обновлен Help
+
+Исправлено:
+	генерация xlsx отчетов - счас генерируется информация о конфигурации + 
+	для каждой модели создается закладка со всеми расчитанными значениями
+
+---------------------------------------------------------------------------------
+
+V.1.0.3.0
+
+Исправлено:
+	Models_Lissov
+	LissovBase
+	LissovLog
+	VisualControls
+	
+	исправлено отображение не всех точек графика
+
+---------------------------------------------------------------------------------
+
+V.1.0.1.0
+	
+Добавлено:	
+	проект OfficeIntegration (для генерации xlsx отчетов)
+	
+	MainForm:
+		
+		свойство ShownPoints - процент отображаемых на графике точек;
+		сохраняется при закрытии формы
+	
+		кнопка Report в раздел "Result" - генерирует xlsx отчет
+		(в разработке)
+	
+---------------------------------------------------------------------------------
+
+V.1.0.0.0
+
+Исправлено:
+	Value:
+		InitValueVisible - if true(default) InitValue will be shown in grid
+		GroupName - if set this value will be added to the group
+		
+	IModel:
+		все, для чего были и Get и Set переделано через свойства
+		
+Добавлено:	
+	проект Test
+
+---------------------------------------------------------------------------------
+
+V.0.3.0.8
+
+Исправлено:
+	Весь аутпут направлен в дебаг клиента
+	
+Добавлено:	
+	Property Configuration added to IModel, ModelBase
+
+	ModelBase:
+	     в GetMenuItems добавлено создание риббон панели файл
+		(кнопки Save, Load всех(!) параметров модели)
+
+---------------------------------------------------------------------------------
+
+V.0.3.0.7
+
+Добавлено:
+	Configuration: property Description
+	MainForm: button about configuration (help panel)
+	ConfigEditForm: Description edit field
+
+---------------------------------------------------------------------------------
+
+V.0.3.0.6
+
+Исправлено:
+
+	ModelBase:
+		GetValueByNameAndTime, GetLastCalculatedTime - фикс иногда возникавшего при старте эксепшена
+
+	Configuration:
+		Sub Model_CycleStarted - добавлена проверка состояния модели
+
+	ConfigEditForm:
+		добавлен обработчик Del таблицы с моделями
+		RefreshLinksGrid - теперь сохраняет текущую первую строку 
+	   (фикс отката таблицы вверх при вводе нового линка)
+
+	MainForm:
+		Sub ShowResult: serie with min and max points added 
+		(to avoid series with result being shown at the top or at the bottom of the chart)
+	
+Добавлено:
+				
+	MainForm:
+	
+		контекстное меню на графике - добавлены пункты 'Clear hints', 'Refresh'
+		
+		свойство ShowInputValues - если TRUE то в дереве и таблице начальных значений 
+		будут отображаться переменные модели с типом Input;
+		сохраняется при закрытии формы
+		
+		свойство ShowHintOnSerieClick - если TRUE то при клике по серии на графике
+		появится хинт с кликнутым на серии графика значением;
+		сохраняется при закрытии формы
+		
+		свойство HiddenTime - результаты вичислений с меньшим временем не отображаются;
+		сохраняется при закрытии формы
+		
+	UserPreference:
+		добавлены свойства ShowInputValues, ShowHintOnSerieClick, HiddenTime
+		
+
+---------------------------------------------------------------------------------
+
+V.0.3.0.5
+
+Исправлено:
+
+	IModel:
+		добавлены
+		Sub SetDisplayName(ByVal displayName As String)
+		Function GetLastCalculatedTime() As Double - последнее гарантированно рассчитанное время
+		Event ExceptionOccurred(ByVal model As IModel, ByVal ex As Exception)
+
+	ModelBase:
+		реализованы изменения IModel
+		Sub Calculate - в случае эксепшена в расчете бросается ExceptionOccurred
+		
+	Configuration:
+		добавлен обработчик нового ивента
+		Sub Model_ExceptionOccurred:
+			останавливает вычисления + показывает сообщение
+		Sub Model_CycleStarted:
+		теперь связи между моделями используют не GetCurrentTime а GetLastCalculatedTime
+				
+	MainForm:
+		добавлена возможность редактирования отображаемых в дереве имен (по F2),
+		сохраняются в конфигурацию
+		
+
+---------------------------------------------------------------------------------
+
+V.0.3.0.4
+
+Исправлено:
+	ModelBase:
+		Function GetValueByNameAndTime
+		в случае некорректных данных вызывается Exeption
+		
+	Configuration:
+		добавлен Event CalculationStopped() - 
+			вызывется если в связи с некорректными данными расчет был прерван
+		Sub Model_CycleStarted
+			теперь если не удалось связать модели останавливает вычисления
+			+ показывает сообщение
+			
+	Value:
+		FromXml - не вгружается Type (иначе его невозможно поменять)
+	
+	MainForm:
+		добавлена проверка на время эксперимента (>0)
+		
+	UserPreference:
+		теперь также сохраняется состояние формы и док панелей
+		
+Добавлено:
+	панели Tools, Help в риббон
+	соответсвенно добавлены формы настройки панелей CustomizeForm, о программе AboutBox, 
+	файл Help
+
+---------------------------------------------------------------------------------
+
+V.0.3.0.3
+
+Исправлено:
+	ModelBase:
+		Sub CollectList - Overridable, 
+		                  собирает также наследников от Parameter, Value		                  
+	ObjectBase: все Get функции теперь Public
+	
+	InputModel: теперь сохраняет-загружает в себя выбранные функции
+	
+	IModel: добавлен метод ResultToXml 
+	-> Кнопка Save на главной форме уже работает
+	
+	Parameter:
+	метод FixValue и Event ValueChanged (вызываются после изменения значения параметра)
+	
+	Parameter:
+	метод FixValue; FixInitValue и Event InitValueChanged (вызываются после изменения значения InitValue)
+	
+Созданы папки Models и Shared и туда перенесены соответственные проекты:
+	Models - реальные считающиеся модели
+	Shared - базовые проекты и полезные котролы в папке Controls
+	
+Добавлено: 
+	этот файл :)
+	BetaSetup контрол (в Shared\Controls)
+
+---------------------------------------------------------------------------------
+
+V.0.3.0.2
+
+Исправлено:
+добавлены Overridable, Overloads 
+добавлен проекты LissovLog и LissovBase
+
+создан проект Functions - в него снесены полезные функции
+(там же мат функции:
+1 - мигрирующие с моей делфи системы типа расчета интеграла - еще будут добавляться
+2 - MathExpression - считает формулу (почти любую :) 
+     пока используется в моем инпут контроле, 
+     потом будет использоваться для создания сложных связей между молелями
+новые полезные мат функции желательно все туда)
+
+создан проект SharedControls - в него снесены полезные контролы
+ProgressForm - формочка которая крутит прогресс на случай что-то долго выполняется
+LongRunningProcess - процесс запускающий эту формочку в новом потоке
+ExceptionMessage - формочка для вывода сообщения об ошибке (со стеком :))
+Timer - еще один таймер, мне с ним удобно 
+Новые контролы - туда
+
+---------------------------------------------------------------------------------
+

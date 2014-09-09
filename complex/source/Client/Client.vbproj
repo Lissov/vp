@@ -1,0 +1,616 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2BB548E9-B05F-43E7-94EF-E155331F0184}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Client.My.MyApplication</StartupObject>
+    <RootNamespace>Client</RootNamespace>
+    <AssemblyName>Modelling tool</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <ApplicationIcon>StyleXP.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Modelling tool.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Modelling tool.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Referencies\DevExpress.Data.v7.3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Referencies\DevExpress.Utils.v7.3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Referencies\DevExpress.XtraBars.v7.3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Referencies\DevExpress.XtraEditors.v7.3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Referencies\DevExpress.XtraGrid.v7.3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Referencies\DevExpress.XtraLayout.v7.3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Referencies\DevExpress.XtraTreeList.v7.3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TeeChart, Version=2.0.2469.25746, Culture=neutral, PublicKeyToken=9c8126276c77bdb7">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Referencies\TeeChart.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBox.Designer.vb">
+      <DependentUpon>AboutBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AboutBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddModelDialog.Designer.vb">
+      <DependentUpon>AddModelDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddModelDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="AppStaticClass.vb" />
+    <Compile Include="ClientPanel.vb" />
+    <Compile Include="ColorGenerator.vb" />
+    <Compile Include="MarkItem.vb" />
+    <Compile Include="ServiceDescription.vb" />
+    <Compile Include="SetMarkslDialog.Designer.vb">
+      <DependentUpon>SetMarkslDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SetMarkslDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomizeForm.Designer.vb">
+      <DependentUpon>CustomizeForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomizeForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModelOutputsMenuLoader.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="MainForm.Designer.vb">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigEditForm.Designer.vb">
+      <DependentUpon>ConfigEditForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigEditForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RtfEditor.designer.vb">
+      <DependentUpon>RtfEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RtfEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserPreference.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigEditForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ConfigEditForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddModelDialog.resx">
+      <DependentUpon>AddModelDialog.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetMarkslDialog.resx">
+      <DependentUpon>SetMarkslDialog.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomizeForm.resx">
+      <DependentUpon>CustomizeForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RtfEditor.resx">
+      <DependentUpon>RtfEditor.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClientControls\ClientControls.vbproj">
+      <Project>{0CFD5A01-2368-41A1-AFD6-75A5400E75B3}</Project>
+      <Name>ClientControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Graph\Graph.vbproj">
+      <Project>{29973652-2B21-4B93-936C-FCFF24BC6BAF}</Project>
+      <Name>Graph</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OfficeIntegration\OfficeIntegration.vbproj">
+      <Project>{E0BB2A14-B153-48E2-9A74-B71BF8B8D462}</Project>
+      <Name>OfficeIntegration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\Controls\BetaSetup\BetaSetup.vbproj">
+      <Project>{0D07F840-2370-40B5-9D30-AC9E4E58985A}</Project>
+      <Name>BetaSetup</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\Controls\SharedControls\SharedControls.vbproj">
+      <Project>{BD314549-18B6-494D-98A2-EB7ACB359D82}</Project>
+      <Name>SharedControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\Controls\VisualControls\VisualControls.csproj">
+      <Project>{F4E8C5F5-CA23-4508-B540-A87068EA7329}</Project>
+      <Name>VisualControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\Functions\Functions.vbproj">
+      <Project>{B7F8E6B0-95FB-407F-A445-F89EF5F599F9}</Project>
+      <Name>Functions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\Controls\InputFunction\InputFunction.vbproj">
+      <Project>{7525C1EC-8784-41FE-91EB-0119E76C133B}</Project>
+      <Name>InputFunction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\LissovBase\LissovBase.csproj">
+      <Project>{6F1EBBDA-15A9-4648-8702-50C397FB42B8}</Project>
+      <Name>LissovBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\ModelBase\ModelBase.vbproj">
+      <Project>{2378DD4D-2EC3-49BD-8756-1011FE926FCB}</Project>
+      <Name>ModelBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\about_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apply_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_pause_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_play_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_stop_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_open_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveas_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apply_24X24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_pause_24X24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_play_24X24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_stop_24X24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_24X24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder open_24X24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_24X24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_24X24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveas_24X24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apply_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_pause_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_play_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bt_stop_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder open_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveas_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\import_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\import_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\import_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exec_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\history_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\map_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_as2_blue_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_blue_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unlock_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unlock_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exec_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\history_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\map_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_as2_blue_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_as_blue_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_blue_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unlock_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exec_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\history_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\map_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_as2_blue_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_as_blue_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_blue_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pictures_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gallery_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pictures_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gallery_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pictures_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gallery_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Help.mht">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\cancel_32x32.png" />
+    <None Include="Resources\cancel_24x24.png" />
+    <None Include="Resources\cancel_16x16.png" />
+    <None Include="Resources\export_16x16.png" />
+    <None Include="Resources\export_24x24.png" />
+    <None Include="Resources\export_32x32.png" />
+    <None Include="Resources\apps_16x16.png" />
+    <None Include="Resources\apps_24x24.png" />
+    <None Include="Resources\about_24x24.png" />
+    <None Include="Resources\apps_32x32.png" />
+    <None Include="Resources\about_32x32.png" />
+    <None Include="Resources\remove_16x16.png" />
+    <None Include="Resources\remove_24x24.png" />
+    <None Include="Resources\remove_32x32.png" />
+    <None Include="Resources\sinfo_32x32.png" />
+    <None Include="Resources\sinfo_16x16.png" />
+    <None Include="Resources\sinfo_24x24.png" />
+    <None Include="Resources\folder_blue_16x16.png" />
+    <None Include="Resources\folder_blue_24x24.png" />
+    <None Include="Resources\folder_blue_32x32.png" />
+    <None Include="Resources\folder_blue_open_16x16.png" />
+    <None Include="Resources\folder_blue_open_24x24.png" />
+    <None Include="Resources\folder_blue_open_32x32.png" />
+    <None Include="Resources\export_2_16x16.png" />
+    <None Include="Resources\export_2_24x24.png" />
+    <None Include="Resources\export_2_32x32.png" />
+    <None Include="Resources\blue_folder_16x16.png" />
+    <None Include="Resources\blue_folder_24x24.png" />
+    <None Include="Resources\blue_folder_32x32.png" />
+    <None Include="Resources\blue_folder_downloads_16x16.png" />
+    <None Include="Resources\blue_folder_downloads_24x24.png" />
+    <None Include="Resources\blue_folder_downloads_32x32.png" />
+    <None Include="Resources\blue_folder_open_16x16.png" />
+    <None Include="Resources\blue_folder_open_24x24.png" />
+    <None Include="Resources\blue_folder_open_32x32.png" />
+    <None Include="Resources\StyleXP_16x16.jpg" />
+    <None Include="Resources\open_16x16.png" />
+    <None Include="Resources\open_24x24.png" />
+    <None Include="Resources\open_32x32.png" />
+    <None Include="Resources\ExcelExport_32x32.png" />
+    <None Include="Resources\element_24x24.png" />
+    <None Include="Resources\element_into_32x32.png" />
+    <None Include="Resources\element_32x32.png" />
+    <None Include="Resources\element_into_16x16.png" />
+    <None Include="Resources\element_16x16.png" />
+    <None Include="Resources\element_into_24x24.png" />
+    <None Include="Resources\copy_32x32.png" />
+    <None Include="Resources\copy_24x24.png" />
+    <None Include="Resources\copy_16x16.png" />
+    <None Include="Resources\application_16x16.png" />
+    <None Include="Resources\application_add_32x32.png" />
+    <None Include="Resources\application_32x32.png" />
+    <None Include="Resources\application_add_24x24.png" />
+    <None Include="Resources\application_24x24.png" />
+    <None Include="Resources\application_add_16x16.png" />
+    <None Include="Resources\view_16x16.png" />
+    <None Include="Resources\view_24x24.png" />
+    <Content Include="StyleXP.ico" />
+    <Content Include="VersionsInfoLog.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Help.files\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
