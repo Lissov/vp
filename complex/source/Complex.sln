@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{F9E370AF-DD5A-44DE-B79D-710EA681D24A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controls", "Controls", "{F5015540-85DC-4931-B214-0C7BBB50AA5A}"
@@ -24,6 +24,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models_Grigoryan", "Models_Grigoryan", "{B351A927-6C11-4798-9887-7B39D6D8261D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{5D32D78F-008E-4E4D-BFD6-256113D2C8BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conference_2014", "Conference_2014", "{F5299AE9-14CC-4707-A81C-866D2539B27B}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Client", "Client\Client.vbproj", "{2BB548E9-B05F-43E7-94EF-E155331F0184}"
 EndProject
@@ -116,8 +118,6 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Modelling tool chart service", "Services\Modelling tool chart service\Modelling tool chart service.vbproj", "{8AA2263D-B040-4E97-9FE3-B51B63475F1A}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EnergyModel_New", "Models\Models_Grigoryan\EnergyModel_New\EnergyModel_New.vbproj", "{FB3F64DF-55CB-4A2B-B922-B09936F72170}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conference_2014", "Conference_2014", "{F5299AE9-14CC-4707-A81C-866D2539B27B}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Model_UprSSS", "Models\Conference_2014\Model_UprSSS\Model_UprSSS.vbproj", "{3A59F342-3B6F-4657-94E6-240B9188E4F6}"
 EndProject
