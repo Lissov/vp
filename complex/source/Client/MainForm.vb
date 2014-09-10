@@ -630,12 +630,15 @@ Public Class MainForm
 
 #Region "Load dlls"
 
+    Dim modelFolders() As String = {"\", "\Archive"}
+
     ''' <summary>
     ''' Load all models from dlls in ModelsFolder
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub LoadModels()
         Dim FolderPath As String = My.Settings.ModelsFolder
+
         If String.IsNullOrEmpty(FolderPath) Then
             FolderPath = My.Application.Info.DirectoryPath
         End If
@@ -643,13 +646,44 @@ Public Class MainForm
             ShowErrorMessage("Unable to load models - folder does not exist")
             Return
         End If
+
+        ' Update list of model folders with current application path
+        For i As Integer = 0 To modelFolders.Length - 1
+            modelFolders(i) = FolderPath + modelFolders(i)
+        Next i
+
         If Not Functions.Folder.CheckExistsOrCreateFolder(TemporaryFolderForModels) Then
             ShowErrorMessage("Unable to load models - tempopary folder does not exist")
             Return
         End If
         Functions.Folder.CleanFolder(TemporaryFolderForModels)
 
-        Dim FolderInfo As New System.IO.DirectoryInfo(FolderPath)
+        ' add handler to resolve assemblies in Archive if some model references them
+        AddHandler AppDomain.CurrentDomain.AssemblyResolve, AddressOf ARHandler
+
+        For Each folder As String In modelFolders
+            CopyModelsToTempFolder(folder)
+        Next
+    End Sub
+
+    Function ARHandler(ByVal sender As Object, ByVal args As ResolveEventArgs) As [Assembly]
+        Dim assemblyName As String = args.Name.Split(",")(0) + ".dll"
+        Dim assemblyPath As String = TemporaryFolderForModels + "\" + assemblyName
+        For Each folder As String In modelFolders
+            If (Functions.File.FileExists(folder + "\" + assemblyName)) Then
+                If Not Functions.File.CopyFile(folder + "\" + assemblyName, assemblyPath, "") Then Return Nothing
+
+                Dim refAssembly As Assembly = Assembly.LoadFile(assemblyPath)
+                Return refAssembly
+            End If
+        Next
+
+        Return Nothing
+    End Function
+
+    Public Function CopyModelsToTempFolder(ByVal folder As String)
+
+        Dim FolderInfo As New System.IO.DirectoryInfo(folder)
         Dim Files As System.IO.FileInfo() = FolderInfo.GetFiles
         If Files IsNot Nothing AndAlso Files.Length > 0 Then
             For Each File As System.IO.FileInfo In Files
@@ -663,8 +697,7 @@ Public Class MainForm
                 If Model IsNot Nothing Then AllModels.Add(Model)
             Next
         End If
-
-    End Sub
+    End Function
 
     ''' <summary>
     ''' Tries to load assembly with IModel from given file
@@ -677,7 +710,9 @@ Public Class MainForm
         Dim ModelObject As Object = Nothing
 
         Dim TempFileName As String = IO.Path.Combine(TemporaryFolderForModels, IO.Path.GetFileName(filePath))
-        If Not Functions.File.CopyFile(filePath, TempFileName, "") Then Return Nothing
+        If Not Functions.File.FileExists(TempFileName) Then
+            If Not Functions.File.CopyFile(filePath, TempFileName, "") Then Return Nothing
+        End If
 
         Try
             Dim ModelAssembly As Assembly = Assembly.LoadFile(TempFileName)
@@ -704,6 +739,7 @@ Public Class MainForm
             Next
         Catch
         Finally
+            ' Btw this normally returns False, as model is loaded and file cannot be deleted :)
             Functions.File.DeleteFile(TempFileName, "")
         End Try
 
@@ -1374,7 +1410,7 @@ Public Class MainForm
             'lock grid for opened saved result
             ParameterGrid.ReadOnly = model.IsOpenedFromResultFile
         End If
-        
+
     End Sub
 
     Private Sub ParameterGrid_CellValueChanged(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles ParameterGrid.CellValueChanged
@@ -1530,7 +1566,7 @@ Public Class MainForm
             'lock grid for opened saved result
             InitValuesGrid.ReadOnly = model.IsOpenedFromResultFile
         End If
-        
+
     End Sub
 
     Private Sub InitValuesGrid_CellValueChanged(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles InitValuesGrid.CellValueChanged
