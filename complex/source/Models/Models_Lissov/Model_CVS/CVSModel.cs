@@ -302,7 +302,7 @@ namespace Model_CVS
                 values.Add(new ValueArrayElement("Pressure" + cid, "Pressure in " + cn, Value.ValueType.Output, pressure, i, cn, false, Constants.Units.mmHg));
                 values.Add(new ValueArrayElement("Volume" + cid, "Volume of " + cn, Value.ValueType.Output, volume, i, cn, false, Constants.Units.ml));
                 values.Add(new ValueArrayElement("FlowIn" + cid, "Flow inside to " + cn, Value.ValueType.Internal, flow_in, i, cn, false, Constants.Units.ml_per_second));
-                values.Add(new ValueArrayElement("FlowOut" + cid, "Flow outside from " + cn, Value.ValueType.Internal, flow_out, i, cn, false, Constants.Units.ml_per_second));
+                values.Add(new ValueArrayElement("FlowOut" + cid, "Flow outside from " + cn, Value.ValueType.Output, flow_out, i, cn, false, Constants.Units.ml_per_second));
 
                 values.Add(new ValueArrayElement("Rigidity" + cid, "Rigidity of " + cn, Value.ValueType.Internal, rigidity, i, cn, true, Constants.Units.mmHg_per_ml));
                 values.Add(new ValueArrayElement("Unstressed" + cid, "Unstressed volume of " + cn, Value.ValueType.Internal, unstressed, i, cn, false, Constants.Units.ml));

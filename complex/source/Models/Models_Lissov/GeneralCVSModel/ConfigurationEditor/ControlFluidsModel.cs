@@ -22,7 +22,7 @@ namespace GeneralCVSModel.ConfigurationEditor
         {
             base.Update();
             cbFiltrationRegulation.CheckState = _GeneralSetupControl.cbCapillaryFiltration.CheckState;
-            cbSimulate.Checked = (_model as FluidsModel).SimulateFluids.Value == LissovModelBase.TRUE;
+            cbSimulate.Checked = ((FluidsModel)_model).SimulateFluids.Value == LissovModelBase.TRUE;
         }
 
         private void cbFiltrationRegulation_CheckedChanged(object sender, EventArgs e)

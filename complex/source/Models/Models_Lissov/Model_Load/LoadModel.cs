@@ -36,6 +36,7 @@ namespace Model_Load
         public ParameterLoadFunction Hemorrhage = new ParameterLoadFunction("Hemorrhage", null, Constants.Units.ml);
         public ParameterLoadFunction WaterInput = new ParameterLoadFunction("Water drinking rate", null, Constants.Units.ml_per_second);
         public ParameterLoadFunction BaroreceptionPower = new ParameterLoadFunction("Baroreception Power", null, Constants.Units.unit);
+        public ParameterLoadFunction WorkLoad = new ParameterLoadFunction("Work load", null, Constants.Units.unit);
 
         public ModelBase.Value HemmorhageFlow = new LissovValue("Hemmorhage flow", ModelBase.Value.ValueType.Output, Constants.Units.ml_per_second);
         
@@ -112,7 +113,8 @@ namespace Model_Load
                     Hemorrhage,
                     RotationAngle,
                     MuscularActivity,
-                    AtmospherePressure
+                    AtmospherePressure,
+                    WorkLoad
                 });
             }
         }
