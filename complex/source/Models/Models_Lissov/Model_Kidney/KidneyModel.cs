@@ -32,9 +32,11 @@ namespace Model_Kidney
         public ParameterSafe PrF0 = new ParameterSafe("Zero Filtering Pressure");
         public ParameterSafe KF = new ParameterSafe("Filtering Koefficient");
         public ParameterObject<SFunction> GainRF_ADG = new ParameterObject<SFunction>("Reabsorbtion to ADG dependency", new SFunction());
-
+        public ParameterSafe ReabsKoeffByEnergyDeff = new ParameterSafe("ReabsKoeffByEnergyDeff", "Reabs. koeff. by Energy deficite");
+        
         public LissovValue PrCap = new LissovValue("Pressure in Kidney capillares", Value.ValueType.Input, Constants.Units.mmHg);
         public LissovValue PrOsm = new LissovValue("Osmotic pressure in Kidney capillares", Value.ValueType.Input, Constants.Units.mmHg);
+        public LissovValue Energy = new LissovValue("Energy", Value.ValueType.Input, Constants.Units.unit);
 
         public LissovValue ADG = new LissovValue("ADG", Value.ValueType.Output, Constants.Units.unit);
         public LissovValue FiltFlow = new LissovValue("Filtering Flow", Value.ValueType.Output, Constants.Units.ml_per_second);
@@ -128,7 +130,14 @@ namespace Model_Kidney
             ADG[ns] = GainADG_Press.Content.getValue(PrOsm[bs]);
 
             FiltFlow[ns] = (PrCap[bs] > PrF0) ? KF * (PrCap[bs] - PrF0) : 0;
-            ReabFlow[ns] = FiltFlow[ns] * GainRF_ADG.Content.getValue(ADG[ns]);
+            double d = 1;
+            if (Energy.Value[bs] < 0)
+            {
+                d = 1 -ReabsKoeffByEnergyDeff * (Energy.Value[bs]);
+            }
+            ReabFlow[ns] = FiltFlow[ns] * GainRF_ADG.Content.getValue(ADG[ns]) * d;
+            if (ReabFlow[ns] > FiltFlow[ns])
+                ReabFlow[ns] = FiltFlow[ns];
 
             #region Consumption
             //water consumption

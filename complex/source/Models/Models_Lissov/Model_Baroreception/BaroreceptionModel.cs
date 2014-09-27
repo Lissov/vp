@@ -50,6 +50,7 @@ namespace Model_Baroreception
             for (int i = 0; i < baroZoneCount; i++)
                 baroCurve[i] = new LogisticFunction2Par() { Unit = Constants.Units.none, XUnit  = Constants.Units.mmHg };
 
+            hormoneEnergyDefGain = new double[hormoneCount];
             hormoneNormalConc = new double[hormoneCount];
             hormoneMinConc = new double[hormoneCount];
             hormoneMaxConc = new double[hormoneCount];
@@ -69,6 +70,7 @@ namespace Model_Baroreception
             pressureInReceptorZone = new double[baroZoneCount][];
             pressureBaseReceptorZone = new double[baroZoneCount][];
             baroreceptionInZone = new double[baroZoneCount][];
+            hormoneConcentrationBaro = new double[hormoneCount][];
             hormoneConcentration = new double[hormoneCount][];
         }
         #endregion
@@ -82,6 +84,7 @@ namespace Model_Baroreception
         internal double[] delayTime;
         internal LogisticFunction2Par[] baroCurve;
 
+        private double[] hormoneEnergyDefGain;
         private double[] hormoneNormalConc;
         private double[] hormoneMinConc;
         private double[] hormoneMaxConc;
@@ -120,6 +123,7 @@ namespace Model_Baroreception
 
             for (int i = 0; i < hormoneCount; i++)
             {
+                parameters.Add(new ParameterArrayElement(hormoneID[i] + "_EnergyK", hormoneID[i] + " energy deff. Gain", hormoneEnergyDefGain, i));
                 parameters.Add(new ParameterArrayElement(hormoneID[i] + "_Initial", hormoneID[i] + " initial concentration", hormoneInitial, i));
                 parameters.Add(new ParameterArrayElement(hormoneID[i] + "_NormalConc", hormoneID[i] + " normal concemtraction", hormoneNormalConc, i));
                 parameters.Add(new ParameterArrayElement(hormoneID[i] + "_MinConc", hormoneID[i] + " minimum concemtraction", hormoneMinConc, i));
@@ -138,12 +142,14 @@ namespace Model_Baroreception
         #endregion
 
         #region Values
+        public Value Energy = new LissovValue("Energy", "Energy", Value.ValueType.Input, Constants.Units.unit);
         public Value ExternalPressure = new LissovValue("ExternalPressure", "External Pressure", Value.ValueType.Input, Constants.Units.mmHg);
         public Value HeartRateDelta = new LissovValue("Heart Rate Delta", Value.ValueType.Input, Constants.Units.beat_per_second);
         public Value BaroreceptionTotal = new LissovValue("BaroreceptionTotal", "Baroreception", Value.ValueType.Output, Constants.Units.unit);
         private double[][] pressureInReceptorZone;
         private double[][] pressureBaseReceptorZone;
         private double[][] baroreceptionInZone;
+        private double[][] hormoneConcentrationBaro;
         private double[][] hormoneConcentration;
         public Value HeartRate = new LissovValue("HeartRate", "Heart rate", Value.ValueType.Output, Constants.Units.beat_per_second) { LinkExpected = true };
         public Value InotropismRight = new LissovValue("InotropismRight", "Inotropism of Right ventricle", Value.ValueType.Output, Constants.Units.unit) { LinkExpected = true };
@@ -156,6 +162,7 @@ namespace Model_Baroreception
         {
             if (values != null) return values;
             values = GetSingleModelValues();
+            values.Add(Energy);
             values.Add(ExternalPressure);
             values.Add(HeartRateDelta);
             for (int i = 0; i < baroZoneCount; i++)
@@ -166,6 +173,7 @@ namespace Model_Baroreception
             }
             for (int i = 0; i < hormoneCount; i++)
             {
+                values.Add(new ValueArrayElement(hormoneID[i] + "ConcentrationBaro", hormoneID[i] + " concentration by B", Value.ValueType.Output, hormoneConcentrationBaro, i, Constants.Units.unit) { InitValue = hormoneInitial[i] });
                 values.Add(new ValueArrayElement(hormoneID[i] + "Concentration", hormoneID[i] + " concentration", Value.ValueType.Output, hormoneConcentration, i, Constants.Units.unit) { InitValue = hormoneInitial[i] });
             }
             values.Add(BaroreceptionTotal);
@@ -188,7 +196,10 @@ namespace Model_Baroreception
                 delaySteps[i] = (int)((decimal)delayTime[i] / Step);
 
             for (int i = 0; i < hormoneCount; i++)
+            {
+                hormoneConcentrationBaro[i][0] = hormoneInitial[i];
                 hormoneConcentration[i][0] = hormoneInitial[i];
+            }
 
             barorecNormalizer.set0_1IntervalThroughPoint(BaroreceptionNormal.Value, 0.5);
             BaroreceptionNormalized.Value[0] = barorecNormalizer.getValue(BaroreceptionNormal.Value);
@@ -240,12 +251,18 @@ namespace Model_Baroreception
             //Gormons
             for (int h = 0; h < hormoneCount; h++)
             {
-                hormoneConcentration[h][CurrStep + 1] = hormoneConcentration[h][CurrStep]
-                    + hormoneTimeKoeff[h] * step *
-                    (hormoneGain0[h] + hormoneGainBaro[h] * baroreception_total
-                    - hormoneConcentration[h][CurrStep]);
+                hormoneConcentrationBaro[h][CurrStep + 1] = hormoneConcentrationBaro[h][CurrStep]
+                                                            + hormoneTimeKoeff[h] * step *
+                                                            (hormoneGain0[h] + hormoneGainBaro[h] * baroreception_total
+                                                             - hormoneConcentrationBaro[h][CurrStep]);
 
-                if (hormoneConcentration[h][CurrStep + 1] > hormoneMaxConc[h])
+                var e = Energy.Value[CurrStep];
+                hormoneConcentration[h][CurrStep + 1] = hormoneConcentrationBaro[h][CurrStep + 1] 
+                    - (e < 0 
+                            ? hormoneEnergyDefGain[h] * e
+                            : 0);
+
+            if (hormoneConcentration[h][CurrStep + 1] > hormoneMaxConc[h])
                     hormoneConcentration[h][CurrStep + 1] = hormoneMaxConc[h];
                 if (hormoneConcentration[h][CurrStep + 1] < hormoneMinConc[h])
                     hormoneConcentration[h][CurrStep + 1] = hormoneMinConc[h];
