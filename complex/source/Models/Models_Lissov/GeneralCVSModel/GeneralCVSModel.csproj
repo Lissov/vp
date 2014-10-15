@@ -251,7 +251,6 @@
     <ProjectReference Include="..\Model_Fluids\Model_Fluids.csproj">
       <Project>{BA8546D8-E9C8-412C-AD51-5D4B81A66A41}</Project>
       <Name>Model_Fluids</Name>
-      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Model_HeartStable\Model_HeartStable.csproj">
       <Project>{A9A9F605-F5D9-42E8-8F28-CF80FD39D450}</Project>
