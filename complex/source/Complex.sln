@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2012
+# Visual C# Express 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{F9E370AF-DD5A-44DE-B79D-710EA681D24A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controls", "Controls", "{F5015540-85DC-4931-B214-0C7BBB50AA5A}"
@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models_Tak", "Models_Tak", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{F4D00BA4-412B-4A5E-B488-4BFF219E0B99}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{DA18C23F-5A4B-4F81-BCA9-C6829A2DAADC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test (2)", "Test (2)", "{DA18C23F-5A4B-4F81-BCA9-C6829A2DAADC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models_Ann", "Models_Ann", "{6A7E01F0-A404-4A60-9069-87C30EFA5AF1}"
 EndProject
@@ -104,8 +104,6 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ClientControls", "ClientControls\ClientControls.vbproj", "{0CFD5A01-2368-41A1-AFD6-75A5400E75B3}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Model_InsulineGlucose", "Models\Models_Tak\InsulinGlucose\Model_InsulineGlucose.vbproj", "{A9D7D600-A4F9-4F28-A4B0-A50E9095D2AA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thermoregulation", "Models\Models_Ann\Thermoregulation\Thermoregulation.csproj", "{2622F518-89FC-4DB2-90DF-E8D0409D115F}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Graph", "Graph\Graph.vbproj", "{29973652-2B21-4B93-936C-FCFF24BC6BAF}"
 EndProject
@@ -368,12 +366,6 @@ Global
 		{A9D7D600-A4F9-4F28-A4B0-A50E9095D2AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9D7D600-A4F9-4F28-A4B0-A50E9095D2AA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A9D7D600-A4F9-4F28-A4B0-A50E9095D2AA}.Release|x86.ActiveCfg = Release|Any CPU
-		{2622F518-89FC-4DB2-90DF-E8D0409D115F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2622F518-89FC-4DB2-90DF-E8D0409D115F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2622F518-89FC-4DB2-90DF-E8D0409D115F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{2622F518-89FC-4DB2-90DF-E8D0409D115F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2622F518-89FC-4DB2-90DF-E8D0409D115F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2622F518-89FC-4DB2-90DF-E8D0409D115F}.Release|x86.ActiveCfg = Release|Any CPU
 		{29973652-2B21-4B93-936C-FCFF24BC6BAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{29973652-2B21-4B93-936C-FCFF24BC6BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29973652-2B21-4B93-936C-FCFF24BC6BAF}.Debug|x86.ActiveCfg = Debug|Any CPU

@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LissovBase</RootNamespace>
     <AssemblyName>LissovBase</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -102,12 +102,10 @@
     <ProjectReference Include="..\Functions\Functions.vbproj">
       <Project>{B7F8E6B0-95FB-407F-A445-F89EF5F599F9}</Project>
       <Name>Functions</Name>
-      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\ModelBase\ModelBase.vbproj">
       <Project>{2378DD4D-2EC3-49BD-8756-1011FE926FCB}</Project>
       <Name>ModelBase</Name>
-      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
