@@ -17,8 +17,8 @@ namespace Model_Energy
 
         #region Vars
         public ParameterSafe TimeParameter = new ParameterSafe("TimeKoeff", "Time Koefficient");
-        public ParameterSafe AtfProductionK = new ParameterSafe("ATFProductionK", "ATF production koeff");
-        public ParameterSafe AtfDestructionK = new ParameterSafe("ATFDestructionK", "ATF usage koeff");
+        public ParameterSafe AtpProductionK = new ParameterSafe("ATPProductionK", "ATP production koeff");
+        public ParameterSafe AtpDestructionK = new ParameterSafe("ATPDestructionK", "ATP usage koeff");
         public ParameterSafe WorkLoad0 = new ParameterSafe("WorkLoad0", "Work load neutral");
         
         public LissovValue FlowSysCap = new LissovValue("System Cappillar flow", Value.ValueType.Input, Constants.Units.ml_per_second);
@@ -28,8 +28,8 @@ namespace Model_Energy
         public LissovValue WorkLoad = new LissovValue("Work load", Value.ValueType.Input, Constants.Units.unit);
 
         public LissovValue Energy = new LissovValue("Energy", Value.ValueType.Output, Constants.Units.unit);
-        public LissovValue AtfProduction = new LissovValue("ATF production speed", Value.ValueType.Output, Constants.Units.unit);
-        public LissovValue AtfDestruction = new LissovValue("ATF usage speed", Value.ValueType.Output, Constants.Units.unit);
+        public LissovValue AtpProduction = new LissovValue("ATP production speed", Value.ValueType.Output, Constants.Units.unit);
+        public LissovValue AtpDestruction = new LissovValue("ATP usage speed", Value.ValueType.Output, Constants.Units.unit);
         #endregion
         
         #region Calcs
@@ -45,10 +45,10 @@ namespace Model_Energy
 
         private void CalcStep(int ns, int bs)
         {
-            AtfProduction[ns] = AtfProductionK * MitochondriaArea[bs] * Pyruvate[bs] * Oxygen[bs] * FlowSysCap[bs];
-            AtfDestruction[ns] = AtfDestructionK * (WorkLoad0 + WorkLoad[bs]);
+            AtpProduction[ns] = AtpProductionK * MitochondriaArea[bs] * Pyruvate[bs] * Oxygen[bs] * FlowSysCap[bs];
+            AtpDestruction[ns] = AtpDestructionK * (WorkLoad0 + WorkLoad[bs]);
 
-            Energy[ns] = Energy[bs] + (double)Step * TimeParameter.Value * (AtfProduction[bs] - AtfDestruction[bs]);
+            Energy[ns] = Energy[bs] + (double)Step * TimeParameter.Value * (AtpProduction[bs] - AtpDestruction[bs]);
         }
         #endregion
     }
