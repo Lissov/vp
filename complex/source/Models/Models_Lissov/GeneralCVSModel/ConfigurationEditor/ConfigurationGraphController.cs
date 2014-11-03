@@ -45,6 +45,9 @@ namespace GeneralCVSModel.ConfigurationEditor
                 case "Fluids":
                     SetControl(new ControlFluidsModel());
                     break;
+                case "Energy":
+                    SetControl(new ControlEnergyModel());
+                    break;
                 case "HeartStable":
                     SetControl(new ControlHeartModel());
                     break;

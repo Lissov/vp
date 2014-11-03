@@ -56,6 +56,7 @@ namespace Model_Kidney
         public ParameterSafe ReservoirRefillVolume = new ParameterSafe("Reservoir refill volume");
         public ParameterSafe ReservoirRefillDelay = new ParameterSafe("Reservoir refill delay");
         public ParameterSafe ReservoirMaxVolume = new ParameterSafe("Reservoir maximum volume");
+        public ParameterSafe UseEnergy = new ParameterSafe("Simulate energy influence");
         private decimal _lastConsumptionTime;
         #endregion
 
@@ -131,7 +132,8 @@ namespace Model_Kidney
 
             FiltFlow[ns] = (PrCap[bs] > PrF0) ? KF * (PrCap[bs] - PrF0) : 0;
             double d = 1;
-            if (Energy.Value[bs] < 0)
+            if (UseEnergy.Value == LissovModelBase.TRUE 
+                && Energy.Value[bs] < 0)
             {
                 d = 1 -ReabsKoeffByEnergyDeff * (Energy.Value[bs]);
             }

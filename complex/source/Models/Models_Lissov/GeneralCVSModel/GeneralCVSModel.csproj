@@ -192,6 +192,12 @@
     <Compile Include="ConfigurationEditor\ControlNoModelSelected.Designer.cs">
       <DependentUpon>ControlNoModelSelected.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfigurationEditor\ControlEnergyModel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfigurationEditor\ControlEnergyModel.Designer.cs">
+      <DependentUpon>ControlEnergyModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConfigurationEditor\IModelControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -249,9 +255,15 @@
       <Name>Model_CVS</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\Model_Energy\Model_Energy.csproj">
+      <Project>{9F062177-BA0C-492A-AC7F-C3F4853F7DE2}</Project>
+      <Name>Model_Energy</Name>
+      <Private>False</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Model_Fluids\Model_Fluids.csproj">
       <Project>{BA8546D8-E9C8-412C-AD51-5D4B81A66A41}</Project>
       <Name>Model_Fluids</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Model_HeartStable\Model_HeartStable.csproj">
       <Project>{A9A9F605-F5D9-42E8-8F28-CF80FD39D450}</Project>
@@ -307,6 +319,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConfigurationEditor\ControlNoModelSelected.resx">
       <DependentUpon>ControlNoModelSelected.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigurationEditor\ControlEnergyModel.resx">
+      <DependentUpon>ControlEnergyModel.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GeneralSetupControl.resx">

@@ -99,6 +99,7 @@ namespace Model_Baroreception
         private ParameterSafe InotropismLAuto = new ParameterSafe("InotropismLeftAuto", "Inotropism of Left ventricle with no hormons");
         private double[] inotropismLGain;
         public ParameterSafe BaroreceptionCopyFirst = new ParameterSafe("BaroreceptionCopyFirst", "Copy first Baroreception value");
+        public ParameterSafe UseEnergy = new ParameterSafe("Use Energy", "Simulate energy influence");
 
         private List<Parameter> parameters = null;
         public override List<Parameter> GetParameters()
@@ -111,6 +112,7 @@ namespace Model_Baroreception
             parameters.Add(HeartRateAuto);
             parameters.Add(InotropismRAuto);
             parameters.Add(InotropismLAuto);
+            parameters.Add(UseEnergy);
             for (int i = 0; i < baroZoneCount; i++)
             {
                 parameters.Add(new ParameterArrayElement("UseZone_" + zoneID[i], "Use baroreception zone " + zoneID[i], useZone, i));
@@ -256,13 +258,18 @@ namespace Model_Baroreception
                                                             (hormoneGain0[h] + hormoneGainBaro[h] * baroreception_total
                                                              - hormoneConcentrationBaro[h][CurrStep]);
 
-                var e = Energy.Value[CurrStep];
-                hormoneConcentration[h][CurrStep + 1] = hormoneConcentrationBaro[h][CurrStep + 1] 
-                    - (e < 0 
-                            ? hormoneEnergyDefGain[h] * e
-                            : 0);
+                if (UseEnergy.Value == LissovModelBase.TRUE)
+                {
+                    var e = Energy.Value[CurrStep];
+                    hormoneConcentration[h][CurrStep + 1] = hormoneConcentrationBaro[h][CurrStep + 1]
+                        - (e < 0
+                                ? hormoneEnergyDefGain[h] * e
+                                : 0);
+                } else {
+                    hormoneConcentration[h][CurrStep + 1] = hormoneConcentrationBaro[h][CurrStep + 1];
+                }
 
-            if (hormoneConcentration[h][CurrStep + 1] > hormoneMaxConc[h])
+                if (hormoneConcentration[h][CurrStep + 1] > hormoneMaxConc[h])
                     hormoneConcentration[h][CurrStep + 1] = hormoneMaxConc[h];
                 if (hormoneConcentration[h][CurrStep + 1] < hormoneMinConc[h])
                     hormoneConcentration[h][CurrStep + 1] = hormoneMinConc[h];

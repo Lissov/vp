@@ -40,15 +40,20 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpConfiguration = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.logControl = new LissovLog.LogControl();
+            this.btnSaveGraphs = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tpEnergy = new System.Windows.Forms.TabPage();
+            this.cbEner_UseEnergyInBaro = new System.Windows.Forms.CheckBox();
+            this.cbEner_UseEnergyInKidney = new System.Windows.Forms.CheckBox();
+            this.logControl = new LissovLog.LogControl();
             this.resultsTable = new GeneralCVSModel.ResultsTable.ResultsTable();
-            this.btnSaveGraphs = new System.Windows.Forms.Button();
+            this.cbEner_UseBaroreception = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tpEnergy.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -150,6 +155,7 @@
             this.tabControl1.Controls.Add(this.tpConfiguration);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tpEnergy);
             this.tabControl1.Location = new System.Drawing.Point(7, 35);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -179,18 +185,15 @@
             this.tabPage2.Text = "Technical info";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // logControl
+            // btnSaveGraphs
             // 
-            this.logControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.logControl.Location = new System.Drawing.Point(6, 35);
-            this.logControl.Name = "logControl";
-            this.logControl.Size = new System.Drawing.Size(531, 235);
-            this.logControl.TabIndex = 1;
-            this.logControl.UseCompatibleStateImageBehavior = false;
-            this.logControl.View = System.Windows.Forms.View.Details;
-            this.logControl.VirtualMode = true;
+            this.btnSaveGraphs.Location = new System.Drawing.Point(340, 6);
+            this.btnSaveGraphs.Name = "btnSaveGraphs";
+            this.btnSaveGraphs.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveGraphs.TabIndex = 2;
+            this.btnSaveGraphs.Text = "Save graphs";
+            this.btnSaveGraphs.UseVisualStyleBackColor = true;
+            this.btnSaveGraphs.Click += new System.EventHandler(this.btnSaveGraphs_Click);
             // 
             // button1
             // 
@@ -213,6 +216,53 @@
             this.tabPage1.Text = "Results table";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // tpEnergy
+            // 
+            this.tpEnergy.Controls.Add(this.cbEner_UseBaroreception);
+            this.tpEnergy.Controls.Add(this.cbEner_UseEnergyInKidney);
+            this.tpEnergy.Controls.Add(this.cbEner_UseEnergyInBaro);
+            this.tpEnergy.Location = new System.Drawing.Point(4, 22);
+            this.tpEnergy.Name = "tpEnergy";
+            this.tpEnergy.Size = new System.Drawing.Size(540, 272);
+            this.tpEnergy.TabIndex = 3;
+            this.tpEnergy.Text = "Energy";
+            this.tpEnergy.UseVisualStyleBackColor = true;
+            // 
+            // cbEner_UseEnergyInBaro
+            // 
+            this.cbEner_UseEnergyInBaro.AutoSize = true;
+            this.cbEner_UseEnergyInBaro.Location = new System.Drawing.Point(25, 62);
+            this.cbEner_UseEnergyInBaro.Name = "cbEner_UseEnergyInBaro";
+            this.cbEner_UseEnergyInBaro.Size = new System.Drawing.Size(179, 17);
+            this.cbEner_UseEnergyInBaro.TabIndex = 0;
+            this.cbEner_UseEnergyInBaro.Text = "Energy influences Baroreception";
+            this.cbEner_UseEnergyInBaro.UseVisualStyleBackColor = true;
+            this.cbEner_UseEnergyInBaro.CheckedChanged += new System.EventHandler(this.cbEner_UseEnergyInBaro_CheckedChanged);
+            // 
+            // cbEner_UseEnergyInKidney
+            // 
+            this.cbEner_UseEnergyInKidney.AutoSize = true;
+            this.cbEner_UseEnergyInKidney.Location = new System.Drawing.Point(12, 16);
+            this.cbEner_UseEnergyInKidney.Name = "cbEner_UseEnergyInKidney";
+            this.cbEner_UseEnergyInKidney.Size = new System.Drawing.Size(217, 17);
+            this.cbEner_UseEnergyInKidney.TabIndex = 1;
+            this.cbEner_UseEnergyInKidney.Text = "Energy influences Reabsorbtion (Kidney)";
+            this.cbEner_UseEnergyInKidney.UseVisualStyleBackColor = true;
+            this.cbEner_UseEnergyInKidney.CheckedChanged += new System.EventHandler(this.cbEner_UseEnergyInKidney_CheckedChanged);
+            // 
+            // logControl
+            // 
+            this.logControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.logControl.Location = new System.Drawing.Point(6, 35);
+            this.logControl.Name = "logControl";
+            this.logControl.Size = new System.Drawing.Size(531, 235);
+            this.logControl.TabIndex = 1;
+            this.logControl.UseCompatibleStateImageBehavior = false;
+            this.logControl.View = System.Windows.Forms.View.Details;
+            this.logControl.VirtualMode = true;
+            // 
             // resultsTable
             // 
             this.resultsTable.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -221,15 +271,16 @@
             this.resultsTable.Size = new System.Drawing.Size(534, 266);
             this.resultsTable.TabIndex = 0;
             // 
-            // btnSaveGraphs
+            // cbEner_UseBaroreception
             // 
-            this.btnSaveGraphs.Location = new System.Drawing.Point(340, 6);
-            this.btnSaveGraphs.Name = "btnSaveGraphs";
-            this.btnSaveGraphs.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveGraphs.TabIndex = 2;
-            this.btnSaveGraphs.Text = "Save graphs";
-            this.btnSaveGraphs.UseVisualStyleBackColor = true;
-            this.btnSaveGraphs.Click += new System.EventHandler(this.btnSaveGraphs_Click);
+            this.cbEner_UseBaroreception.AutoSize = true;
+            this.cbEner_UseBaroreception.Location = new System.Drawing.Point(12, 39);
+            this.cbEner_UseBaroreception.Name = "cbEner_UseBaroreception";
+            this.cbEner_UseBaroreception.Size = new System.Drawing.Size(179, 17);
+            this.cbEner_UseBaroreception.TabIndex = 2;
+            this.cbEner_UseBaroreception.Text = "Simulate baroreflex (incl. Energy)";
+            this.cbEner_UseBaroreception.UseVisualStyleBackColor = true;
+            this.cbEner_UseBaroreception.CheckedChanged += new System.EventHandler(this.cbEner_UseBaroreception_CheckedChanged);
             // 
             // GeneralSetupControl
             // 
@@ -246,6 +297,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tpEnergy.ResumeLayout(false);
+            this.tpEnergy.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,5 +322,9 @@
         private System.Windows.Forms.TabPage tabPage1;
         public GeneralCVSModel.ResultsTable.ResultsTable resultsTable;
         private System.Windows.Forms.Button btnSaveGraphs;
+        private System.Windows.Forms.TabPage tpEnergy;
+        private System.Windows.Forms.CheckBox cbEner_UseEnergyInBaro;
+        private System.Windows.Forms.CheckBox cbEner_UseEnergyInKidney;
+        private System.Windows.Forms.CheckBox cbEner_UseBaroreception;
     }
 }

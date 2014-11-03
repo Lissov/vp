@@ -101,6 +101,8 @@ namespace GeneralCVSModel
                 else
                     cbCapillaryFiltration.Enabled = false;
 
+                ShowEnergyData();
+
                 confEdit.Update();
             }
             finally
@@ -220,6 +222,35 @@ namespace GeneralCVSModel
         {
             public IModel mdl;
             public Value vl;
+        }
+
+        #region Energy Model
+        public void ShowEnergyData()
+        {
+            cbEner_UseBaroreception.Checked = CVSSubModels.BaroreceptionModel.BaroreceptionCopyFirst.Value == LissovModelBase.FALSE;
+            cbEner_UseEnergyInBaro.Checked = CVSSubModels.BaroreceptionModel.UseEnergy.Value == LissovModelBase.TRUE;
+            cbEner_UseEnergyInKidney.Checked = CVSSubModels.KidneyModel.UseEnergy.Value == LissovModelBase.TRUE;
+        }
+
+        #endregion
+
+        private void cbEner_UseEnergyInBaro_CheckedChanged(object sender, EventArgs e)
+        {
+            CVSSubModels.BaroreceptionModel.UseEnergy.Value = cbEner_UseEnergyInBaro.Checked
+                ? LissovModelBase.TRUE
+                : LissovModelBase.FALSE;
+        }
+
+        private void cbEner_UseEnergyInKidney_CheckedChanged(object sender, EventArgs e)
+        {
+            CVSSubModels.KidneyModel.UseEnergy.Value = cbEner_UseEnergyInKidney.Checked
+                ? LissovModelBase.TRUE
+                : LissovModelBase.FALSE;
+        }
+
+        private void cbEner_UseBaroreception_CheckedChanged(object sender, EventArgs e)
+        {
+            cbBaroreception.Checked = cbEner_UseBaroreception.Checked;
         }
     }
 }
