@@ -47,8 +47,8 @@
             this.cbEner_UseEnergyInBaro = new System.Windows.Forms.CheckBox();
             this.cbEner_UseEnergyInKidney = new System.Windows.Forms.CheckBox();
             this.logControl = new LissovLog.LogControl();
-            this.resultsTable = new GeneralCVSModel.ResultsTable.ResultsTable();
             this.cbEner_UseBaroreception = new System.Windows.Forms.CheckBox();
+            this.resultsTable = new GeneralCVSModel.ResultsTable.ResultsTable();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -231,11 +231,11 @@
             // cbEner_UseEnergyInBaro
             // 
             this.cbEner_UseEnergyInBaro.AutoSize = true;
-            this.cbEner_UseEnergyInBaro.Location = new System.Drawing.Point(25, 62);
+            this.cbEner_UseEnergyInBaro.Location = new System.Drawing.Point(12, 62);
             this.cbEner_UseEnergyInBaro.Name = "cbEner_UseEnergyInBaro";
-            this.cbEner_UseEnergyInBaro.Size = new System.Drawing.Size(179, 17);
+            this.cbEner_UseEnergyInBaro.Size = new System.Drawing.Size(138, 17);
             this.cbEner_UseEnergyInBaro.TabIndex = 0;
-            this.cbEner_UseEnergyInBaro.Text = "Energy influences Baroreception";
+            this.cbEner_UseEnergyInBaro.Text = "Energy influences reflex";
             this.cbEner_UseEnergyInBaro.UseVisualStyleBackColor = true;
             this.cbEner_UseEnergyInBaro.CheckedChanged += new System.EventHandler(this.cbEner_UseEnergyInBaro_CheckedChanged);
             // 
@@ -263,6 +263,17 @@
             this.logControl.View = System.Windows.Forms.View.Details;
             this.logControl.VirtualMode = true;
             // 
+            // cbEner_UseBaroreception
+            // 
+            this.cbEner_UseBaroreception.AutoSize = true;
+            this.cbEner_UseBaroreception.Location = new System.Drawing.Point(12, 39);
+            this.cbEner_UseBaroreception.Name = "cbEner_UseBaroreception";
+            this.cbEner_UseBaroreception.Size = new System.Drawing.Size(182, 17);
+            this.cbEner_UseBaroreception.TabIndex = 2;
+            this.cbEner_UseBaroreception.Text = "Simulate baroreflex (excl. Energy)";
+            this.cbEner_UseBaroreception.UseVisualStyleBackColor = true;
+            this.cbEner_UseBaroreception.CheckedChanged += new System.EventHandler(this.cbEner_UseBaroreception_CheckedChanged);
+            // 
             // resultsTable
             // 
             this.resultsTable.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -270,17 +281,6 @@
             this.resultsTable.Name = "resultsTable";
             this.resultsTable.Size = new System.Drawing.Size(534, 266);
             this.resultsTable.TabIndex = 0;
-            // 
-            // cbEner_UseBaroreception
-            // 
-            this.cbEner_UseBaroreception.AutoSize = true;
-            this.cbEner_UseBaroreception.Location = new System.Drawing.Point(12, 39);
-            this.cbEner_UseBaroreception.Name = "cbEner_UseBaroreception";
-            this.cbEner_UseBaroreception.Size = new System.Drawing.Size(179, 17);
-            this.cbEner_UseBaroreception.TabIndex = 2;
-            this.cbEner_UseBaroreception.Text = "Simulate baroreflex (incl. Energy)";
-            this.cbEner_UseBaroreception.UseVisualStyleBackColor = true;
-            this.cbEner_UseBaroreception.CheckedChanged += new System.EventHandler(this.cbEner_UseBaroreception_CheckedChanged);
             // 
             // GeneralSetupControl
             // 
