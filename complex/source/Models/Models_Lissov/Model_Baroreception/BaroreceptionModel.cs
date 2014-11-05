@@ -24,7 +24,7 @@ namespace Model_Baroreception
         }
 
         #region Internal
-        SquareFunction barorecNormalizer = new SquareFunction();
+        Function barorecNormalizer;
 
         internal int baroZoneCount = 3;
         internal string[] zoneID;
@@ -58,6 +58,7 @@ namespace Model_Baroreception
             hormoneGainBaro = new double[hormoneCount];
             hormoneInitial = new double[hormoneCount];
             hormoneTimeKoeff = new double[hormoneCount];
+            hormoneDestr = new double[hormoneCount];
             heartRateGain = new double [hormoneCount];
             inotropismRGain = new double[hormoneCount];
             inotropismLGain = new double[hormoneCount];
@@ -92,6 +93,7 @@ namespace Model_Baroreception
         private double[] hormoneGainBaro;
         private double[] hormoneInitial;
         private double[] hormoneTimeKoeff;
+        private double[] hormoneDestr;
         private ParameterSafe HeartRateAuto = new ParameterSafe("HeartRateAuto", "Heart Rate with no hormons");
         private double[] heartRateGain;
         private ParameterSafe InotropismRAuto = new ParameterSafe("InotropismRightAuto", "Inotropism of Right ventricle with no hormons");
@@ -133,6 +135,7 @@ namespace Model_Baroreception
                 parameters.Add(new ParameterArrayElement(hormoneID[i] + "_Gain0", hormoneID[i] + " zero gain", hormoneGain0, i));
                 parameters.Add(new ParameterArrayElement(hormoneID[i] + "_GainBaro", hormoneID[i] + " gain from baoreception", hormoneGainBaro, i));
                 parameters.Add(new ParameterArrayElement(hormoneID[i] + "_TimeKoeff", hormoneID[i] + " time koefficient", hormoneTimeKoeff, i));
+                parameters.Add(new ParameterArrayElement(hormoneID[i] + "_DestrK", hormoneID[i] + " destruction speed", hormoneDestr, i));
 
                 parameters.Add(new ParameterArrayElement("HeartRateGain_" + hormoneID[i], "HeartRate gain to" + hormoneID[i], heartRateGain, i));
                 parameters.Add(new ParameterArrayElement("InotropismRGain_" + hormoneID[i], "Inotromism of right ventricle gain to" + hormoneID[i], inotropismRGain, i));
@@ -203,7 +206,13 @@ namespace Model_Baroreception
                 hormoneConcentration[i][0] = hormoneInitial[i];
             }
 
-            barorecNormalizer.set0_1IntervalThroughPoint(BaroreceptionNormal.Value, 0.5);
+            if (BaroreceptionNormal.Value == 0.25) {
+                barorecNormalizer = new RootFunction();
+                ((RootFunction)barorecNormalizer).setParams(1, 1, 0, 0);
+            } else {
+                barorecNormalizer = new SquareFunction();
+                ((SquareFunction)barorecNormalizer).set0_1IntervalThroughPoint(BaroreceptionNormal.Value, 0.5);
+            }
             BaroreceptionNormalized.Value[0] = barorecNormalizer.getValue(BaroreceptionNormal.Value);
         }
         public override void Cycle()
@@ -253,10 +262,15 @@ namespace Model_Baroreception
             //Gormons
             for (int h = 0; h < hormoneCount; h++)
             {
+                /*Adrenalin.Value[cs] = Adrenalin.Value[cs - 1] + step *
+                    (GainAdrenalinBarorec.Value * (1 - baro)
+                        - DestructionAdrenalin.Value * Adrenalin.Value[cs - 1]);*/
+
+                var dhorm = hormoneGain0[h] 
+                    + hormoneGainBaro[h] * baroreception_total
+                    - hormoneDestr[h] * hormoneConcentrationBaro[h][CurrStep];
                 hormoneConcentrationBaro[h][CurrStep + 1] = hormoneConcentrationBaro[h][CurrStep]
-                                                            + hormoneTimeKoeff[h] * step *
-                                                            (hormoneGain0[h] + hormoneGainBaro[h] * baroreception_total
-                                                             - hormoneConcentrationBaro[h][CurrStep]);
+                    + hormoneTimeKoeff[h] * step * dhorm;
 
                 if (UseEnergy.Value == LissovModelBase.TRUE)
                 {

@@ -164,16 +164,11 @@ namespace Model_CVS
         public ParameterBool BrainFlowResistanceInertiality = new ParameterBool("BrainFlow regulated resistance inertiality");
         public ParameterBool BaroreceptionSensitivity = new ParameterBool("BaroreceptionSensitivity") { Value = 1, MinValue = 0, MaxValue = 1000 };
         #region Gormones
-        public Parameter GainAdrenalinBarorec = new Parameter("GainAdrenalinBarorec", "Gain of Adrenalin to Baroreception");
-        public Parameter GainNoredrenalinBarorec = new Parameter("GainNoredrenalinBarorec", "Gain of Noradrenalin to Baroreception");
-        public Parameter GainAcetylcholineBarorec = new Parameter("GainAcetylcholineBarorec", "Gain of Acetylcholine to Baroreception");
-        public Parameter DestructionAdrenalin = new Parameter("DestructionAdrenalin", "Destruction speed of Adrenalin");
-        public Parameter DestructionNoradrenalin = new Parameter("DestructionNoradrenalin", "Destruction speed of Noradrenalin");
-        public Parameter DestructionAcetylcholine = new Parameter("DestructionAcetylcholine", "Destruction speed of Acetylcholine");
         public Parameter RigidityInertiality = new Parameter("RigidityInertiality", "Inertiality of rigidity");
         public Parameter UnstressedInertiality = new Parameter("UnstressedInertiality", "Inertiality of Unstressed volume");
         public Parameter RigidityMaxChange = new Parameter("RigidityMaximumChange", "Rigidity maximum change");
         public Parameter UnstressedMaxChange = new Parameter("UnstressedMaximumChange", "Unstressed maximum change");
+        public Parameter AdrenalinNorm = new Parameter("AdrenalineNormal", "Normal concentration of adrenaline");
         #endregion
 
         public List<Parameter> parameters = null;
@@ -189,16 +184,11 @@ namespace Model_CVS
             parameters.Add(BrainFlowResistanceInertiality);
             parameters.Add(BaroreceptionSensitivity);
             #region Gormons
-            parameters.Add(GainAdrenalinBarorec);
-            parameters.Add(GainNoredrenalinBarorec);
-            parameters.Add(GainAcetylcholineBarorec);
-            parameters.Add(DestructionAdrenalin);
-            parameters.Add(DestructionNoradrenalin);
-            parameters.Add(DestructionAcetylcholine);
             parameters.Add(RigidityInertiality);
             parameters.Add(UnstressedInertiality);
             parameters.Add(RigidityMaxChange);
             parameters.Add(UnstressedMaxChange);
+            parameters.Add(AdrenalinNorm);
             #endregion
             
             for (int i = 0; i < configuration.CompartmentCount; i++)
@@ -245,19 +235,25 @@ namespace Model_CVS
         public ModelBase.Value KidneyFlowOut = new LissovValue("KidneyFlowOut", "Kidney Flow Out", ModelBase.Value.ValueType.Input, Constants.Units.ml_per_second);
         public ModelBase.Value Gravity = new LissovValue("Gravity", "Gravity", ModelBase.Value.ValueType.Input);
         public ModelBase.Value RotationAngle = new LissovValue("RotationAngle", "Rotation Angle", ModelBase.Value.ValueType.Input, Constants.Units.degree);
-        public ModelBase.Value Baroreception = new LissovValue("Baroreception", "Baroreception", ModelBase.Value.ValueType.Input, Constants.Units.unit);
 
         public ModelBase.Value PressExtPleural = new LissovValue("PressExtPleural", "Pleural External Pressure", ModelBase.Value.ValueType.Input, Constants.Units.mmHg);
         public ModelBase.Value PressExtAbdominal = new LissovValue("PressExtAbdominal", "Abdominal External Pressure", ModelBase.Value.ValueType.Input, Constants.Units.mmHg);
         public ModelBase.Value PressAtm = new LissovValue("PressAtm", "Athmosphere pressure", ModelBase.Value.ValueType.Input, Constants.Units.mmHg);
         public ModelBase.Value MuscularActivity = new LissovValue("MuscularActivity", "Muscular Activity", ModelBase.Value.ValueType.Input, Constants.Units.unit);
+
+        public ModelBase.Value Adrenalin = new LissovValue("Adrenalin", "Adrenalin concentration", ModelBase.Value.ValueType.Input, Constants.Units.unit);
+        /*public ModelBase.Value Noradrenalin = new LissovValue("Noradrenalin", "Noradrenalin concentration", ModelBase.Value.ValueType.Input, Constants.Units.unit);
+        public ModelBase.Value Acetylcholine = new LissovValue("Acetylcholine", "Acetylcholine concentration", ModelBase.Value.ValueType.Input, Constants.Units.unit);*/
+        #endregion
+
+        #region Internal
+        public ModelBase.Value AdrenalinEff = new LissovValue("AdrenalinEff", "Adrenalin effective concentration", ModelBase.Value.ValueType.Internal, Constants.Units.unit);
+        /*public ModelBase.Value NoradrenalinEff = new LissovValue("NoradrenalinEff", "Noradrenalin effective concentration", ModelBase.Value.ValueType.Internal, Constants.Units.unit);
+        public ModelBase.Value AcetylcholineEff = new LissovValue("AcetylcholineEff", "Acetylcholine effective concentration", ModelBase.Value.ValueType.Internal, Constants.Units.unit);*/
         #endregion
 
         #region Outputs
         public ModelBase.Value PeripherialResistance = new LissovValue("PeripherialResistance", "Peripherial Resistance", ModelBase.Value.ValueType.Output, Constants.Units.PRU);
-        public ModelBase.Value Adrenalin = new LissovValue("Adrenalin", "Adrenalin concentration", ModelBase.Value.ValueType.Output, Constants.Units.unit);
-        public ModelBase.Value Noradrenalin = new LissovValue("Noradrenalin", "Noradrenalin concentration", ModelBase.Value.ValueType.Output, Constants.Units.unit);
-        public ModelBase.Value Acetylcholine = new LissovValue("Acetylcholine", "Acetylcholine concentration", ModelBase.Value.ValueType.Output, Constants.Units.unit);
         public ModelBase.Value ExternalFlow = new LissovValue("TotalExternalFlow", "Total external flow", Value.ValueType.Output, Constants.Units.ml_per_second);
         public ModelBase.Value HeartSumFlow = new LissovValue("HeartSumFlow", "Summary flow from heart", Value.ValueType.Output, Constants.Units.ml_per_second);
         #endregion
@@ -275,11 +271,17 @@ namespace Model_CVS
             values.Add(KidneyFlowOut);
             values.Add(Gravity);
             values.Add(RotationAngle);
-            values.Add(Baroreception);
             values.Add(PressExtPleural);
             values.Add(PressExtAbdominal);
             values.Add(PressAtm);
             values.Add(MuscularActivity);
+            values.Add(Adrenalin);
+            /*values.Add(Noradrenalin);
+            values.Add(Acetylcholine);*/
+            //Internal
+            values.Add(AdrenalinEff);
+            /*values.Add(AcetylcholineEff);
+            values.Add(NoradrenalinEff);*/
 
             for (int i = 0; i < configuration.CompartmentCount; i++)
             {
@@ -324,9 +326,6 @@ namespace Model_CVS
 
             //add outputs
             values.Add(PeripherialResistance);
-            values.Add(Adrenalin);
-            values.Add(Noradrenalin);
-            values.Add(Acetylcholine);
             values.Add(ExternalFlow);
             values.Add(HeartSumFlow);
 
@@ -438,15 +437,9 @@ namespace Model_CVS
                 if (name == "Unstressed inertiality") { UnstressedInertiality.Value = double.Parse(value); continue; }
                 if (name == "Rigidity inertiality") { RigidityInertiality.Value = double.Parse(value); continue; }
 
-                if (name == "Gain Adr/Barorec") { GainAdrenalinBarorec.Value = double.Parse(value); continue; }
-                if (name == "Gain Noradr/Barorec") { GainNoredrenalinBarorec.Value = double.Parse(value); continue; }
-                if (name == "Gain Ach/Barorec") { GainAcetylcholineBarorec.Value = double.Parse(value); continue; }
-                if (name == "Adr destruction") { DestructionAdrenalin.Value = double.Parse(value); continue; }
-                if (name == "Noradr destruction") { DestructionNoradrenalin.Value = double.Parse(value); continue; }
-                if (name == "Ach destruction") { DestructionAcetylcholine.Value = double.Parse(value); continue; }
                 if (name == "Adrenaline initial") { Adrenalin.InitValue = double.Parse(value); continue; }
-                if (name == "Noradrenaline initial") { Noradrenalin.InitValue = double.Parse(value); continue; }
-                if (name == "Acetilholine initial") { Acetylcholine.InitValue = double.Parse(value); continue; }
+                /*if (name == "Noradrenaline initial") { Noradrenalin.InitValue = double.Parse(value); continue; }
+                if (name == "Acetilholine initial") { Acetylcholine.InitValue = double.Parse(value); continue; }*/
 
                 if (name == "Save step") { StepDivider.Value = double.Parse(value); continue; }                
 
@@ -579,9 +572,10 @@ namespace Model_CVS
             if (stepDivider > 1)
             {
                 //returtn them back
-                Adrenalin.Value[CurrStep + 1] = Adrenalin.Value[cs];
-                Acetylcholine.Value[CurrStep + 1] = Acetylcholine.Value[cs];
-                Noradrenalin.Value[CurrStep + 1] = Noradrenalin.Value[cs];
+                AdrenalinEff.Value[CurrStep + 1] = AdrenalinEff.Value[cs];
+                /*NoradrenalinEff.Value[CurrStep + 1] = NoradrenalinEff.Value[cs];
+                AcetylcholineEff.Value[CurrStep + 1] = AcetylcholineEff.Value[cs];*/
+
                 for (int i = 0; i < configuration.CompartmentCount; i++)
                 {
                     rigidity[i][CurrStep + 1] = rigidity[i][cs];
@@ -752,25 +746,31 @@ namespace Model_CVS
         /// </summary>
         private void CalculateVascularTone(int cs, double step, int base_input_step)
         {
-            double baro = Baroreception.Value[0] + 
-                (Baroreception.Value[base_input_step] - Baroreception.Value[0]) * BaroreceptionSensitivity.Value;
+            AdrenalinEff.Value[cs] = AdrenalinNorm.Value +
+                (1d - Math.Sqrt(1d - Adrenalin.Value[base_input_step]) - AdrenalinNorm.Value) * BaroreceptionSensitivity.Value;
+            /*NoradrenalinEff.Value[cs] = Noradrenalin.Value[0] +
+                (Noradrenalin.Value[base_input_step] - Noradrenalin.Value[0]) * BaroreceptionSensitivity.Value;
+            AcetylcholineEff.Value[cs] = Acetylcholine.Value[0] +
+                (Acetylcholine.Value[base_input_step] - Acetylcholine.Value[0]) * BaroreceptionSensitivity.Value;*/
+            /*            double baro = Baroreception.Value[0] + 
+                                        (Baroreception.Value[base_input_step] - Baroreception.Value[0]) * BaroreceptionSensitivity.Value;
 
-            Adrenalin.Value[cs] = Adrenalin.Value[cs-1] + step *
-                (GainAdrenalinBarorec.Value * (1 - baro)
-                    - DestructionAdrenalin.Value * Adrenalin.Value[cs-1]);
+                                    Adrenalin.Value[cs] = Adrenalin.Value[cs-1] + step *
+                                        (GainAdrenalinBarorec.Value * (1 - baro)
+                                            - DestructionAdrenalin.Value * Adrenalin.Value[cs-1]);
 
-            Noradrenalin.Value[cs] = Noradrenalin.Value[cs - 1] + step *
-                (GainNoredrenalinBarorec.Value * baro
-                    - DestructionNoradrenalin.Value * Noradrenalin.Value[cs - 1]);
+                                    Noradrenalin.Value[cs] = Noradrenalin.Value[cs - 1] + step *
+                                        (GainNoredrenalinBarorec.Value * baro
+                                            - DestructionNoradrenalin.Value * Noradrenalin.Value[cs - 1]);
 
-            Acetylcholine.Value[cs] = Acetylcholine.Value[cs-1] + step *
-                (GainAcetylcholineBarorec.Value * baro
-                    - DestructionAcetylcholine.Value * Acetylcholine.Value[cs-1]);
+                                    Acetylcholine.Value[cs] = Acetylcholine.Value[cs-1] + step *
+                                        (GainAcetylcholineBarorec.Value * baro
+                                            - DestructionAcetylcholine.Value * Acetylcholine.Value[cs-1]);*/
 
             for (int i = 0; i < configuration.CompartmentCount; i++)
             {
                 rigidity[i][cs] = rigidity[i][cs - 1] +
-                        (rigidity_zero[i] * (1 + gain_rigidity_adrenalin[i] * (Adrenalin.Value[cs] - 0.5))
+                        (rigidity_zero[i] * (1 + gain_rigidity_adrenalin[i] * (AdrenalinEff.Value[cs] - 0.5))
                             - rigidity[i][cs - 1])
                             * temperature_tone_koeff[i][cs - 1]
                             * RigidityInertiality.Value * step;
@@ -778,7 +778,7 @@ namespace Model_CVS
                 unstressed[i][cs] = unstressed[i][cs-1] +
                     ((1 - PressAtm.Value[cs] * gain_unstressed_pext[i])
                     * unstressed_zero[i]
-                    * (1 + gain_unstressed_adrenalin[i] * (Adrenalin.Value[cs] - 0.5))
+                    * (1 + gain_unstressed_adrenalin[i] * (AdrenalinEff.Value[cs] - 0.5))
                     - unstressed[i][cs-1]) * UnstressedInertiality.Value * step;
 
                 resistanceOutput[i][cs ] = resistanceOutput_zero[i] * (volume_zero[i] / volume[i][cs-1]);

@@ -57,6 +57,7 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Constants.cs" />
+    <Compile Include="Functions\RootFunction.cs" />
     <Compile Include="IDynamicValue.cs" />
     <Compile Include="ParameterBool.cs" />
     <Compile Include="Extensions\ValueExtensions.cs" />
