@@ -12,6 +12,7 @@ using LissovBase.Functions;
 using System.Xml;
 using LissovLog;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace Model_CVS
 {
@@ -601,11 +602,8 @@ namespace Model_CVS
                 pressure_full[i][CurrStep + 1] = pressure[i][CurrStep + 1] + ext_pressure[i][CurrStep]
                     - muscularTone[i] * MuscularActivity.Value[CurrStep]; ;
 
-                if (volume[i][CurrStep + 1] < 0.001)
-                    Log.Write(LogLevel.ERROR, "Volume < 0.001 in [{0}] (equal {1}) at step {2}", configuration.CompartmentNames[i], volume[i][CurrStep + 1].ToString(), cs.ToString());
-
-                if (volume[i][CurrStep + 1] > 5000)
-                    Log.Write(LogLevel.ERROR, "Volume > 5000 in [{0}] (equal {1}) at step {2}", configuration.CompartmentNames[i], volume[i][CurrStep + 1].ToString(), cs.ToString());
+                if (! (volume[i][CurrStep + 1] > 0.001 && volume[i][CurrStep + 1] < 5000))
+                    Log.Write(LogLevel.ERROR, "Volume incorrect in [{0}] (equal {1}) at step {2}", configuration.CompartmentNames[i], volume[i][CurrStep + 1].ToString(), cs.ToString());
             }
 
             #region Averages and Totals
@@ -747,7 +745,10 @@ namespace Model_CVS
         private void CalculateVascularTone(int cs, double step, int base_input_step)
         {
             AdrenalinEff.Value[cs] = AdrenalinNorm.Value +
-                (1d - Math.Sqrt(1d - Adrenalin.Value[base_input_step]) - AdrenalinNorm.Value) * BaroreceptionSensitivity.Value;
+                (Adrenalin.Value[base_input_step] - AdrenalinNorm.Value) * BaroreceptionSensitivity.Value;
+/*            AdrenalinEff.Value[cs] = AdrenalinNorm.Value +
+                (1d - Math.Sqrt(1d - Adrenalin.Value[base_input_step]) - AdrenalinNorm.Value) * BaroreceptionSensitivity.Value;*/
+
             /*NoradrenalinEff.Value[cs] = Noradrenalin.Value[0] +
                 (Noradrenalin.Value[base_input_step] - Noradrenalin.Value[0]) * BaroreceptionSensitivity.Value;
             AcetylcholineEff.Value[cs] = Acetylcholine.Value[0] +
@@ -770,7 +771,7 @@ namespace Model_CVS
             for (int i = 0; i < configuration.CompartmentCount; i++)
             {
                 rigidity[i][cs] = rigidity[i][cs - 1] +
-                        (rigidity_zero[i] * (1 + gain_rigidity_adrenalin[i] * (AdrenalinEff.Value[cs] - 0.5))
+                        (rigidity_zero[i] * (1 + gain_rigidity_adrenalin[i] * (AdrenalinEff.Value[cs] - AdrenalinNorm.Value))
                             - rigidity[i][cs - 1])
                             * temperature_tone_koeff[i][cs - 1]
                             * RigidityInertiality.Value * step;
@@ -778,7 +779,7 @@ namespace Model_CVS
                 unstressed[i][cs] = unstressed[i][cs-1] +
                     ((1 - PressAtm.Value[cs] * gain_unstressed_pext[i])
                     * unstressed_zero[i]
-                    * (1 + gain_unstressed_adrenalin[i] * (AdrenalinEff.Value[cs] - 0.5))
+                    * (1 + gain_unstressed_adrenalin[i] * (AdrenalinEff.Value[cs] - AdrenalinNorm.Value))
                     - unstressed[i][cs-1]) * UnstressedInertiality.Value * step;
 
                 resistanceOutput[i][cs ] = resistanceOutput_zero[i] * (volume_zero[i] / volume[i][cs-1]);

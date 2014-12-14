@@ -95,13 +95,14 @@ namespace Model_Baroreception
         private double[] hormoneTimeKoeff;
         private double[] hormoneDestr;
         private ParameterSafe HeartRateAuto = new ParameterSafe("HeartRateAuto", "Heart Rate with no hormons");
+        private ParameterSafe HeartRateMin = new ParameterSafe("HeartRateMin", "Heart Rate minimum");
         private double[] heartRateGain;
         private ParameterSafe InotropismRAuto = new ParameterSafe("InotropismRightAuto", "Inotropism of Right ventricle with no hormons");
         private double[] inotropismRGain;
         private ParameterSafe InotropismLAuto = new ParameterSafe("InotropismLeftAuto", "Inotropism of Left ventricle with no hormons");
         private double[] inotropismLGain;
         public ParameterSafe BaroreceptionCopyFirst = new ParameterSafe("BaroreceptionCopyFirst", "Copy first Baroreception value");
-        public ParameterSafe UseEnergy = new ParameterSafe("Use Energy", "Simulate energy influence");
+        public ParameterSafe UseEnergy = new ParameterSafe("UseEnergy", "Simulate energy influence");
 
         private List<Parameter> parameters = null;
         public override List<Parameter> GetParameters()
@@ -112,6 +113,7 @@ namespace Model_Baroreception
             parameters.Add(BaroreceptionCopyFirst);
             parameters.Add(BaroreceptionNormal);
             parameters.Add(HeartRateAuto);
+            parameters.Add(HeartRateMin);
             parameters.Add(InotropismRAuto);
             parameters.Add(InotropismLAuto);
             parameters.Add(UseEnergy);
@@ -304,6 +306,9 @@ namespace Model_Baroreception
                 HeartRate.Value[CurrStep + 1] = heartrate + HeartRateThermoDelta.Value[CurrentStep - 1];
             else
                 HeartRate.Value[CurrStep + 1] = heartrate;
+
+            if (HeartRate.Value[CurrStep + 1] < HeartRateMin.Value)
+                HeartRate.Value[CurrStep + 1] = HeartRateMin.Value;
 
             InotropismRight.Value[CurrStep + 1] = inotrR;
             InotropismLeft.Value[CurrStep + 1] = inotrL;
