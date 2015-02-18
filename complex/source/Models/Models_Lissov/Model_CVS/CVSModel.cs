@@ -245,6 +245,7 @@ namespace Model_CVS
         public ModelBase.Value Adrenalin = new LissovValue("Adrenalin", "Adrenalin concentration", ModelBase.Value.ValueType.Input, Constants.Units.unit);
         /*public ModelBase.Value Noradrenalin = new LissovValue("Noradrenalin", "Noradrenalin concentration", ModelBase.Value.ValueType.Input, Constants.Units.unit);
         public ModelBase.Value Acetylcholine = new LissovValue("Acetylcholine", "Acetylcholine concentration", ModelBase.Value.ValueType.Input, Constants.Units.unit);*/
+        public ModelBase.Value ResistanceKoeff = new LissovValue("ResistanceKoefficient", "Resistance multiplier", ModelBase.Value.ValueType.Input, Constants.Units.unit);
         #endregion
 
         #region Internal
@@ -277,6 +278,7 @@ namespace Model_CVS
             values.Add(PressAtm);
             values.Add(MuscularActivity);
             values.Add(Adrenalin);
+            values.Add(ResistanceKoeff);
             /*values.Add(Noradrenalin);
             values.Add(Acetylcholine);*/
             //Internal
@@ -782,7 +784,15 @@ namespace Model_CVS
                     * (1 + gain_unstressed_adrenalin[i] * (AdrenalinEff.Value[cs] - AdrenalinNorm.Value))
                     - unstressed[i][cs-1]) * UnstressedInertiality.Value * step;
 
-                resistanceOutput[i][cs ] = resistanceOutput_zero[i] * (volume_zero[i] / volume[i][cs-1]);
+                double rk = ResistanceKoeff.Value[base_input_step];
+                if (configuration.Departments[configuration.DepartmentPulmonary].Contains(i))
+                {
+                    // for lungs resistance koefficient is not counted
+                    rk = 1;
+                }
+                resistanceOutput[i][cs ] = resistanceOutput_zero[i] 
+                    * (volume_zero[i] / volume[i][cs-1])
+                    * rk;
 
                 #region Boundary checks
                 if (rigidity[i][cs] < 0.01)

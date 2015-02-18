@@ -185,6 +185,7 @@ Allows one-axis simple orthostatic change.
   <Kidney>11</Kidney>
   <Brain>5</Brain>
   <BeforeBrain>4</BeforeBrain>
+  <DepartmentPulmonary>1</DepartmentPulmonary>
   <CompartmentPositionX>
     <double>1.78</double>
     <double>0.572</double>
