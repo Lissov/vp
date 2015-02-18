@@ -36,12 +36,16 @@
             this.checkSimulate = new System.Windows.Forms.CheckBox();
             this.functionPanel = new VisualControls.FunctionEditPanel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbBase = new System.Windows.Forms.TextBox();
             this.group.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // group
             // 
+            this.group.Controls.Add(this.tbBase);
+            this.group.Controls.Add(this.label1);
             this.group.Controls.Add(this.tbInitial);
             this.group.Controls.Add(this.labelInitial);
             this.group.Controls.Add(this.btnChange);
@@ -57,18 +61,18 @@
             // 
             // tbInitial
             // 
-            this.tbInitial.Location = new System.Drawing.Point(171, 17);
+            this.tbInitial.Location = new System.Drawing.Point(145, 17);
             this.tbInitial.Name = "tbInitial";
-            this.tbInitial.Size = new System.Drawing.Size(76, 20);
+            this.tbInitial.Size = new System.Drawing.Size(63, 20);
             this.tbInitial.TabIndex = 4;
             this.tbInitial.TextChanged += new System.EventHandler(this.tbInitial_TextChanged);
             // 
             // labelInitial
             // 
-            this.labelInitial.Location = new System.Drawing.Point(89, 20);
+            this.labelInitial.Location = new System.Drawing.Point(78, 20);
             this.labelInitial.Name = "labelInitial";
             this.labelInitial.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.labelInitial.Size = new System.Drawing.Size(85, 18);
+            this.labelInitial.Size = new System.Drawing.Size(66, 18);
             this.labelInitial.TabIndex = 3;
             this.labelInitial.Text = ":Initial value";
             // 
@@ -109,6 +113,23 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(214, 20);
+            this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label1.Size = new System.Drawing.Size(37, 18);
+            this.label1.TabIndex = 5;
+            this.label1.Text = ":Base";
+            // 
+            // tbBase
+            // 
+            this.tbBase.Location = new System.Drawing.Point(257, 17);
+            this.tbBase.Name = "tbBase";
+            this.tbBase.Size = new System.Drawing.Size(58, 20);
+            this.tbBase.TabIndex = 6;
+            this.tbBase.TextChanged += new System.EventHandler(this.tbBase_TextChanged);
+            // 
             // ParameterLoadFunctionEditControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -132,6 +153,8 @@
         public System.Windows.Forms.Button btnChange;
         public System.Windows.Forms.CheckBox checkSimulate;
         public System.Windows.Forms.Label labelInitial;
+        private System.Windows.Forms.TextBox tbBase;
+        public System.Windows.Forms.Label label1;
 
     }
 }

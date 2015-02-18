@@ -96,6 +96,8 @@ namespace Model_CVS
         //[XmlIgnore]
         public int BeforeBrain { get; set; }
 
+        public int DepartmentPulmonary { get; set; }
+
         private double?[] _compartmentPositionX;
         public double?[] CompartmentPositionX
         {

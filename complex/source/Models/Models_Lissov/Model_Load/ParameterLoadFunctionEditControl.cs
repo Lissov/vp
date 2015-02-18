@@ -37,6 +37,7 @@ namespace Model_Load
             functionPanel.RedrawGraph();
             checkSimulate.Checked = (_function.Simulate == LissovModelBase.TRUE);
             tbInitial.Text = _function.Output.InitValue.ToString();
+            tbBase.Text = _function.BaseValue.Value.ToString();
             _refreshing = false;
         }
 
@@ -62,6 +63,22 @@ namespace Model_Load
             }
             else
                 errorProvider1.SetError(tbInitial, "Incorrect numeric value");
+        }
+
+        private void tbBase_TextChanged(object sender, EventArgs e)
+        {
+
+            if (_refreshing) return;
+            errorProvider1.Clear();
+            double d;
+            if (double.TryParse(tbBase.Text, out d))
+            {
+                _function.BaseValue.Value = d;
+                functionPanel.RedrawGraph();
+                OnChanged();
+            }
+            else
+                errorProvider1.SetError(tbBase, "Incorrect numeric value");
         }
 
         private void btnChange_Click(object sender, EventArgs e)
